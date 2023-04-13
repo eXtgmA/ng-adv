@@ -1,1 +1,33 @@
 <app-markdown-renderer [md]="'signal-basics'"></app-markdown-renderer>
+
+<mat-card appearance="outlined">
+  <mat-card-header>
+    <mat-card-title> Combine </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content
+    fxLayout="row wrap"
+    fxLayoutAlign="center start"
+    class="cmdItems"
+  >
+    <button mat-raised-button color="accent" (click)="signalBasics()">
+      Signals Basics
+    </button>
+    <button mat-raised-button color="accent" (click)="signalTyped()">
+      Signals Typed
+    </button>
+    <!-- <button mat-raised-button color="accent" (click)="signalEffects()">
+      Signals Effects
+    </button> -->
+    <!-- <button mat-raised-button color="accent" (click)="leftJoin()">
+      combineLatestWith() - left join
+    </button> -->
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-content>
+    <div>Total Amount {{ totalAmount()}} </div>
+    <div>Running Amount {{ runningAmount()}} </div>
+  </mat-card-content>
+</mat-card>
