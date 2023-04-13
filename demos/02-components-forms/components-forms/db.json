@@ -198,14 +198,6 @@
       "component": "ErrStateMatcherComponent",
       "visible": true,
       "sortOrder": 6
-    },   
-    {
-      "url": "ngx-formly",
-      "topicid": 3,
-      "title": "Dynamic Forms - Formly",
-      "component": "NgxFormlyComponent",
-      "visible": true,
-      "sortOrder": 8
     }
   ],
   "skills": [

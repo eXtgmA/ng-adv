@@ -10,7 +10,6 @@ import { FormControlComponent } from './samples/form-control/form-control.compon
 import { FormBuilderComponent } from './samples/forms-builder/forms-builder.component';
 import { GetRawValueComponent } from './samples/get-raw-value/get-raw-value.component';
 import { HostBindingListenerComponent } from './samples/host-binding-listener/host-binding-listener.component';
-import { NgxFormlyComponent } from './samples/ngx-formly/ngx-formly.component';
 import { ReactiveCascadeComponent } from './samples/cascade/reactive-cascade.component';
 import { ReactiveExplicitTypedExternalComponent } from './samples/explicit-typed-external/reactive-explicit-typed-external.component';
 import { ReactiveExplicitTypedComponent } from './samples/explicit-typed/reactive-explicit-typed.component';
@@ -59,7 +58,6 @@ const demoRoutes: Routes = [
       { path: 'err-state-matcher', component: ErrStateMatcherComponent },
       { path: 'validation', component: ReactiveValidationComponent },
       { path: 'cascade', component: ReactiveCascadeComponent },
-      { path: 'ngx-formly', component: NgxFormlyComponent },
       { path: 'typedforms', component: ReactiveTypedComponent },
       { path: 'typedformsexplicit', component: ReactiveExplicitTypedComponent },
       {
