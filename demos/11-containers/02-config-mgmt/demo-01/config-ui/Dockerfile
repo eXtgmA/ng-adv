@@ -11,11 +11,11 @@ RUN npm run build
 FROM nginx:alpine
 VOLUME /var/cache/nginx
 
-# Take from node-build
+# Take output from node build
 COPY --from=build /app/dist/config-ui/ /usr/share/nginx/html
-# Take from project folder
+# Add nginx url rewriteconfig
 COPY ./config/nginx.conf /etc/nginx/conf.d/default.conf
-
+# Substitute environment vars
 CMD ["/bin/sh",  "-c",  "envsubst < /usr/share/nginx/html/assets/env.template.js > /usr/share/nginx/html/assets/env.js && exec nginx -g 'daemon off;'"]
 
 # docker build --rm -f Dockerfile -t config-ui .

@@ -22,12 +22,14 @@ export class MenuService {
 
 - Explain `menu.service.ts` and its responsive behavior when changing screen width. Also mention `navbar.component.ts` and the Hamburger-Menu.
 
-```html
-<mat-toolbar color="primary">
-  <mat-toolbar-row fxLayoutGap="10px">
-    <div fxHide.gt-xs (click)="toggleMenu()" class="clickable" >
-         <mat-icon color="accent">menu</mat-icon>
+  ```html
+  <mat-toolbar-row>
+    <div
+      (click)="toggleMenu()"
+      class="hamburgerMenu"
+    >
+      <mat-icon color="accent">menu</mat-icon>
     </div>
-```
+  ```
 
 - We will refactor `menu.service.ts` to the ngrx state later on

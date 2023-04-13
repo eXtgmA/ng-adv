@@ -17,7 +17,6 @@ import { MouseDomObservablesComponent } from './samples/mouse-dom-observables/mo
 import { OperatorsComponent } from './samples/operators/operators.component';
 import { SubjectsComponent } from './samples/subjects/subjects.component';
 import { UnsubscribingComponent } from './samples/unsubscribing/unsubscribing.component';
-import { WatchRxJsComponent } from './samples/watchrxjs/watchrxjs.component';
 import { SharedModule } from '../shared/shared.module';
 import { LangFeaturesComponent } from './samples/lang-features/lang-features.component';
 import { DebouncedSearchComponent } from './samples/debounced-search/debounced-search.component';
@@ -54,7 +53,6 @@ const demoRoutes: Routes = [
       { path: 'customops', component: CustomOperatorsComponent },
       { path: 'errhandling', component: ErrHandlingComponent },
       { path: 'combining', component: CombiningComponent },
-      { path: 'watchrxjs', component: WatchRxJsComponent },
       { path: 'transformation', component: TransformationComponent },
       { path: 'caching', component: CachingComponent },
       { path: 'actionstreams', component: ActionStreamsComponent },
@@ -79,7 +77,6 @@ const demoRoutes: Routes = [
     AsyncPipeComponent,
     ErrHandlingComponent,
     CombiningComponent,
-    WatchRxJsComponent,
     CachingComponent,
     ActionStreamsComponent,
     LangFeaturesComponent,

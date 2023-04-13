@@ -11,7 +11,7 @@ import { SnackbarService } from '../snackbar/snackbar.service';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  constructor(private ms: MenuService, private sns: SnackbarService) {}
+  constructor(private ms: MenuService, private sns: SnackbarService) { }
 
   title = 'Advanced Angular Development';
   editorDisplayed: boolean = false;
@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit {
   }
 
   toggleMenu() {
-    this.ms.toggleMenu();
+    this.ms.toggleMenuVisibility();
   }
 
   toggleApps() {
