@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { UntypedFormControl, Validators, FormControl } from '@angular/forms';
+import { Component, DestroyRef, inject } from '@angular/core';
+import { FormControl, Validators, UntypedFormControl } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
-  selector: 'app-form-control',
-  templateUrl: './form-control.component.html',
-  styleUrls: ['./form-control.component.scss'],
+  selector: 'app-destroy-ref',
+  templateUrl: './destroy-ref.component.html',
+  styleUrls: ['./destroy-ref.component.scss']
 })
-export class FormControlComponent implements OnInit {
+export class DestroyRefComponent {
   name = new FormControl('',
     [Validators.required, Validators.minLength(3)],
     []);
@@ -15,6 +15,12 @@ export class FormControlComponent implements OnInit {
   city = new FormControl<string>('Idolsberg', [Validators.maxLength(15)]);
 
   private destroy$ = new Subject();
+  constructor() {
+    inject(DestroyRef).onDestroy(() => {
+      this.destroy$.next(true);
+      this.destroy$.complete();
+    });
+  }
 
   ngOnInit() {
     this.name.valueChanges.pipe(takeUntil(this.destroy$)).subscribe((data) =>

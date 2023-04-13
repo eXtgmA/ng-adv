@@ -36,6 +36,7 @@ import { SignalsBasicsComponent } from './samples/signals-basics/signals-basics.
 import { SignalsEventBusComponent } from './signals-event-bus/signals-event-bus.component';
 import { SignalsMenuComponent } from './signals-menu/signals-menu.component';
 import { FormControlComponent } from './samples/form-control/form-control.component';
+import { DestroyRefComponent } from './samples/destroy-ref/destroy-ref.component';
 
 const demoRoutes: Routes = [
   {
@@ -96,7 +97,8 @@ const demoRoutes: Routes = [
     DemoRowComponent,
     SignalsBasicsComponent,
     SignalsEventBusComponent,
-    SignalsMenuComponent
+    SignalsMenuComponent,
+    DestroyRefComponent
   ],
   imports: [
     CommonModule,
