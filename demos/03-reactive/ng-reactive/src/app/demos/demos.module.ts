@@ -32,6 +32,9 @@ import { ListComponent } from './samples/statefull/list/list.component';
 import { KpiComponent } from './samples/statefull/kpi/kpi.component';
 import { DemoRowComponent } from './demo-row/demo-row.component';
 import { MarkdownEditorComponent } from '../shared/markdown-editor/markdown-editor.component';
+import { SignalsBasicsComponent } from './samples/signals-basics/signals-basics.component';
+import { SignalsEventBusComponent } from './signals-event-bus/signals-event-bus.component';
+import { SignalsMenuComponent } from './signals-menu/signals-menu.component';
 
 const demoRoutes: Routes = [
   {
@@ -87,7 +90,10 @@ const demoRoutes: Routes = [
     EventbusComponent,
     ListComponent,
     KpiComponent,
-    DemoRowComponent
+    DemoRowComponent,
+    SignalsBasicsComponent,
+    SignalsEventBusComponent,
+    SignalsMenuComponent
   ],
   imports: [
     CommonModule,
