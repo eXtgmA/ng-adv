@@ -1,15 +1,6 @@
 {
   "demos": [
     {
-      "url": "ebus",
-      "title": "EventBus",
-      "component": "EventbusComponent",
-      "id": 1,
-      "topicid": 1,
-      "visible": true,
-      "sortOrder": 3
-    },
-    {
       "url": "app-state",
       "title": "App State",
       "component": "AppStateComponent",

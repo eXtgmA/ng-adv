@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { StatefulDemoService } from '../../demos/samples/statefull/stateful-demo.service';
 import { SnackbarService } from '../snackbar/snackbar.service';
-import { SidePanelService } from './sidepanel.service';
-import { SidebarActions } from './sidebar.actions';
 import { ThemeService } from '../theme/theme.service';
+import { SidebarActions } from './sidebar.actions';
+import { SidePanelService } from './sidepanel.service';
 
 @Component({
   selector: 'app-side-panel',
@@ -13,10 +14,11 @@ export class SidePanelComponent implements OnInit {
   constructor(
     private sns: SnackbarService,
     private eb: SidePanelService,
-    private ts: ThemeService
-  ) {}
+    private ts: ThemeService,
+    private service: StatefulDemoService
+  ) { }
 
-  editorDisplayed: boolean;
+  editorDisplayed: boolean = false;
 
   ngOnInit() {
     this.editorDisplayed = false;
@@ -27,16 +29,27 @@ export class SidePanelComponent implements OnInit {
   }
 
   toggleEditor() {
-    this.editorDisplayed = !this.editorDisplayed;
-    this.eb.triggerCmd(
-      this.editorDisplayed
-        ? SidebarActions.SHOW_MARKDOWN
-        : SidebarActions.HIDE_MARKDOWN
-    );
+    if (this.editorDisplayed) {
+      this.eb.triggerCmd(SidebarActions.HIDE_MARKDOWN);
+    } else {
+      this.eb.triggerCmd(SidebarActions.SHOW_MARKDOWN);
+    }
     this.editorDisplayed = !this.editorDisplayed;
   }
 
   showUpload() {
-    this.sns.displayAlert('Info', 'Not implemented - just a Demo');
+    this.sns.displayAlert('Info', 'Uploading to Cloud');
+  }
+
+  addDemo() {
+    this.service.addDemo({
+      url: 'mock',
+      title: 'The added item',
+      component: 'StatefullComponentxxx',
+      id: 111,
+      topicid: 1,
+      visible: true,
+      sortOrder: 0,
+    });
   }
 }

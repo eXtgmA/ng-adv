@@ -11,11 +11,11 @@ import { SnackbarService } from '../snackbar/snackbar.service';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  constructor(private ms: MenuService, private sns: SnackbarService) {}
+  constructor(private ms: MenuService, private sns: SnackbarService) { }
 
+  title = 'Advanced Angular Development';
   editorDisplayed: boolean = false;
-  rootRoutes: Route[] | undefined;
-  menuItems: Observable<MenuItem[]> | undefined;
+  menuItems: Observable<MenuItem[]> | null = null;
 
   ngOnInit() {
     this.editorDisplayed = false;
@@ -23,10 +23,10 @@ export class NavbarComponent implements OnInit {
   }
 
   toggleMenu() {
-    this.ms.toggleMenu();
+    this.ms.toggleMenuVisibility();
   }
 
   toggleApps() {
-    this.sns.displayAlert('Apps', 'Not implemented! - just a mock');
+    this.sns.displayAlert('Apps', 'Not implemented - just a mock');
   }
 }

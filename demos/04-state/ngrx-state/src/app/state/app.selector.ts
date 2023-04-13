@@ -13,11 +13,6 @@ export const getSideNavVisible = createSelector(
   (state: AppState) => state.sideNavVisible
 );
 
-export const getSideNavEnabled = createSelector(
-  getAppState,
-  (state: AppState) => state.sideNavEnabled
-);
-
 export const getSideNavPosition = createSelector(
   getAppState,
   (state: AppState) => state.sideNavPosition

@@ -1,16 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDrawerMode } from '@angular/material/sidenav';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { filter, map } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { filter, map, takeUntil } from 'rxjs/operators';
 import { MenuService } from 'src/app/shared/menu/menu.service';
 import { environment } from 'src/environments/environment';
 import { LoadingService } from '../../shared/loading/loading.service';
-import { SidebarActions } from '../../shared/side-panel/sidebar.actions';
-import { SidePanelService } from '../../shared/side-panel/sidepanel.service';
-import { getAllDemos } from '../state/demo.selectors';
-import { loadDemos } from '../state/demos.actions';
-import { DemoState } from '../state/demos.reducer';
+import { DemoService } from '../demo-base/demo.service';
+import { SidePanelService } from 'src/app/shared/side-panel/sidepanel.service';
+import { SidebarActions } from 'src/app/shared/side-panel/sidebar.actions';
+import { MenuFacade } from 'src/app/state/menu.facade';
 
 @Component({
   selector: 'app-demo-container',
@@ -18,67 +16,47 @@ import { DemoState } from '../state/demos.reducer';
   styleUrls: ['./demo-container.component.scss'],
 })
 export class DemoContainerComponent implements OnInit {
+
+  router = inject(Router);
+  route = inject(ActivatedRoute);
+  ds = inject(DemoService);
+  ms = inject(MenuService);
+  ls = inject(LoadingService);
+  eb = inject(SidePanelService);
+
+  destroy$ = new Subject();
   title: string = environment.title;
   header = 'Please select a demo';
-  demos$ = this.store.select(getAllDemos);
-  isLoading = true;
-  sidenavMode: MatDrawerMode = 'side';
-  sidenavVisible: boolean = true;
+  demos = this.ds.getItems();
 
-  showEditor$ = this.eb
+  isLoading = false;
+
+  sidenavMode = this.ms.getSideNavPosition();
+  sidenavVisible = this.ms.getSideNavVisible();
+  workbenchMargin = this.sidenavVisible.pipe(
+    map(visible => { return visible ? { 'margin-left': '5px' } : {} })
+  );
+
+  showMdEditor = this.eb
     .getCommands()
     .pipe(
       map((action) => (action === SidebarActions.HIDE_MARKDOWN ? false : true))
     );
 
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    public ms: MenuService,
-    public ls: LoadingService,
-    private store: Store<DemoState>,
-    private eb: SidePanelService
-  ) { }
-
-  ngOnInit() {
-    this.getDemos();
-    this.setMetadata();
-    this.setMenu();
-    this.getWorbenchStyle();
-    this.subscribeLoading();
-    this.store.dispatch(loadDemos());
-  }
-
-  subscribeLoading() {
-    this.ls.getLoading().subscribe((value) => {
+  constructor() {
+    this.ls.getLoading().pipe(takeUntil(this.destroy$)).subscribe((value) => {
       Promise.resolve(null).then(() => (this.isLoading = value));
     });
   }
 
-  setMenu() {
-    this.ms.position$.subscribe(
-      (mode: any) => (this.sidenavMode = mode as MatDrawerMode)
-    );
 
-    this.ms.visible$.subscribe(
-      (visible: any) => (this.sidenavVisible = visible)
-    );
+  ngOnInit() {
+    this.setComponentMetadata();
   }
 
-  getDemos() {
-    this.demos$ = this.store.select(getAllDemos);
-  }
-
-  getWorbenchStyle() {
-    let result = {};
-    this.ms.visible$.subscribe((visible: any) => {
-      result = visible
-        ? {
-          'margin-left': '5px',
-        }
-        : {};
-    });
-    return result;
+  ngOnDestroy() {
+    this.destroy$.next(true);
+    this.destroy$.complete();
   }
 
   rootRoute(route: ActivatedRoute): ActivatedRoute {
@@ -88,9 +66,10 @@ export class DemoContainerComponent implements OnInit {
     return route;
   }
 
-  setMetadata() {
+  setComponentMetadata() {
     this.router.events
       .pipe(
+        takeUntil(this.destroy$),
         filter((event) => event instanceof NavigationEnd),
         map(() => this.rootRoute(this.route)),
         filter((route: ActivatedRoute) => route.outlet === 'primary')

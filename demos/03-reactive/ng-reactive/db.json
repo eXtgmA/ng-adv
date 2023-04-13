@@ -101,14 +101,18 @@
       "component": "MouseDomObservablesComponent"
     },
     {
-      "url": "flexlayoutapi",
-      "title": "Flex Layout Api",
-      "component": "FlexLayoutApiComponent"
-    },
-    {
       "url": "statefull",
       "title": "Statefull Service",
       "component": "StatefullComponent"
+    },
+    {
+      "url": "ebus",
+      "title": "EventBus",
+      "component": "EventbusComponent",
+      "id": 1,
+      "topicid": 1,
+      "visible": true,
+      "sortOrder": 3
     }
   ],
   "skills": [

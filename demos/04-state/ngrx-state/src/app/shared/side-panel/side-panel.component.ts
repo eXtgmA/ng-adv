@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { SnackbarService } from '../snackbar/snackbar.service';
-import { SidePanelService } from './sidepanel.service';
-import { SidebarActions } from './sidebar.actions';
-import { ThemeService } from '../theme/theme.service';
 import { StatefulDemoService } from '../../demos/samples/statefull/stateful-demo.service';
-import { addDemo } from '../../demos/state/demos.actions';
+import { SnackbarService } from '../snackbar/snackbar.service';
+import { ThemeService } from '../theme/theme.service';
+import { SidebarActions } from './sidebar.actions';
+import { SidePanelService } from './sidepanel.service';
 
 @Component({
   selector: 'app-side-panel',
@@ -17,7 +16,7 @@ export class SidePanelComponent implements OnInit {
     private eb: SidePanelService,
     private ts: ThemeService,
     private service: StatefulDemoService
-  ) {}
+  ) { }
 
   editorDisplayed: boolean = false;
 

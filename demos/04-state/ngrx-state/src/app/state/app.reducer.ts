@@ -2,46 +2,29 @@ import { createReducer, on } from '@ngrx/store';
 import {
   changeSideNavPosition,
   changeSideNavVisible,
-  changeTitle,
-  setSideNavEnabled,
   toggleMockAuthenticated,
   toggleSideNav,
 } from './app.actions';
+import { MatDrawerMode } from '@angular/material/sidenav';
 
 export const appFeatureKey = 'app';
 
 export interface AppState {
-  title: string;
-  sideNavEnabled: boolean;
-  sideNavVisible: boolean;
-  sideNavPosition: string;
   IsMockAuthenticated: boolean;
+  sideNavVisible: boolean;
+  sideNavPosition: MatDrawerMode;
 }
 
 export const initialAppState: AppState = {
-  title: 'Advanced Angular Development',
-  sideNavEnabled: true,
+  IsMockAuthenticated: false,
   sideNavVisible: true,
   sideNavPosition: 'side',
-  IsMockAuthenticated: false,
 };
 
-export const appReducer = createReducer(
-  initialAppState,
-  on(changeTitle, (state, action) => {
-    return { ...state, title: action.title };
-  }),
-  on(toggleMockAuthenticated, (state, action) => {
-    return { ...state, IsMockAuthenticated: !state.IsMockAuthenticated };
-  }),
+export const appReducer = createReducer(initialAppState,
   on(toggleSideNav, (state) => ({
     ...state,
     sideNavVisible: !state.sideNavVisible,
-  })),
-  on(setSideNavEnabled, (state, action) => ({
-    ...state,
-    sideNavEnabled: action.enabled,
-    sideNavVisible: action.enabled,
   })),
   on(changeSideNavVisible, (state, action) => ({
     ...state,
@@ -49,6 +32,9 @@ export const appReducer = createReducer(
   })),
   on(changeSideNavPosition, (state, action) => ({
     ...state,
-    sideNavPosition: action.position,
-  }))
+    sideNavPosition: action.position as MatDrawerMode,
+  })),
+  on(toggleMockAuthenticated, (state, action) => {
+    return { ...state, IsMockAuthenticated: !state.IsMockAuthenticated };
+  }),
 );

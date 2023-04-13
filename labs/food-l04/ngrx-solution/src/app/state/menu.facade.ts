@@ -1,14 +1,17 @@
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Injectable, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
+
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { tap } from 'rxjs/operators';
 import {
   changeSideNavPosition,
   changeSideNavVisible,
-  toggleSideNav,
+  toggleSideNav
 } from './app.actions';
 import { AppState } from './app.reducer';
-import { getSideNavPosition, getSideNavVisible } from './app.selector';
+import {
+  getSideNavPosition, getSideNavVisible
+} from './app.selector';
 
 @Injectable({
   providedIn: 'root',

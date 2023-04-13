@@ -1,40 +1,58 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { MediaChange, MediaObserver } from '@angular/flex-layout';
+import { Injectable, inject } from '@angular/core';
+import { MatDrawerMode } from '@angular/material/sidenav';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { MenuItem } from './menu-item.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MenuService {
-  constructor(private mediaObserver: MediaObserver, private http: HttpClient) {
-    this.handleChange();
+
+  http = inject(HttpClient);
+  breakpointObserver = inject(BreakpointObserver);
+
+  constructor() {
+    this.watchScreen.subscribe();
   }
 
-  visible$: BehaviorSubject<boolean> = new BehaviorSubject(true);
-  position$: BehaviorSubject<string> = new BehaviorSubject('side');
+  visible$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
+  position$: BehaviorSubject<MatDrawerMode> = new BehaviorSubject<MatDrawerMode>('side');
 
-  private handleChange() {
-    this.mediaObserver
-      .asObservable()
-      .pipe(
-        filter((changes: MediaChange[]) => changes.length > 0),
-        map((changes: MediaChange[]) => changes[0])
-      )
-      .subscribe((change) => {
-        this.visible$.next(change.mqAlias === 'xs' ? false : true);
-        this.position$.next(change.mqAlias === 'xs' ? 'over' : 'side');
-      });
+  getSideNavVisible() {
+    return this.visible$.asObservable();
   }
 
-  getTopItems(): Observable<MenuItem[]> {
-    return this.http.get<MenuItem[]>('/assets/top-items.json');
+  getSideNavPosition() {
+    return this.position$.asObservable();
+  }
+
+  watchScreen = this.breakpointObserver
+    .observe([Breakpoints.XSmall, Breakpoints.Small])
+    .pipe(
+      tap((matchesBreakpoint) => {
+        console.log(matchesBreakpoint);
+        this.visible$.next(matchesBreakpoint.matches ? false : true);
+        this.position$.next(matchesBreakpoint.matches ? 'over' : 'side');
+      })
+    );
+
+  setSideNavEnabled(val: boolean) {
+    this.visible$.next(val);
+  }
+
+  adjustSidenavToScreen(mq: string): boolean {
+    return mq == 'xs' ? false : true;
   }
 
   toggleMenuVisibility() {
     let status = !this.visible$.getValue();
     this.visible$.next(status);
+  }
+
+  getTopItems(): Observable<MenuItem[]> {
+    return this.http.get<MenuItem[]>('/assets/top-items.json');
   }
 }
