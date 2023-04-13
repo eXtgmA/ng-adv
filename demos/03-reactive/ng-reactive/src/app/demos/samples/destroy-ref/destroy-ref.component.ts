@@ -15,6 +15,7 @@ export class DestroyRefComponent {
   city = new FormControl<string>('Idolsberg', [Validators.maxLength(15)]);
 
   private destroy$ = new Subject();
+
   constructor() {
     inject(DestroyRef).onDestroy(() => {
       this.destroy$.next(true);
