@@ -1,11 +1,19 @@
 <app-markdown-renderer [md]="'unsubscribe'"></app-markdown-renderer>
+
 <mat-card appearance="outlined">
   <mat-card-header>
-    <mat-card-title> Works with Mock Data - No Service needed </mat-card-title>
+    <mat-card-title>SignPad - Single Subscript</mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <app-sign-pad></app-sign-pad>
   </mat-card-content>
 </mat-card>
 
-<app-imperative [title]="'Unsubscribe using takeUntil & destroy$'" [showMD]="false"></app-imperative>
+<mat-card appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>Multiple Subscriptions - destroy$ Subject</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <app-form-control></app-form-control>
+  </mat-card-content>
+</mat-card>

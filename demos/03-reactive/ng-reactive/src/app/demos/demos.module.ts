@@ -35,6 +35,7 @@ import { MarkdownEditorComponent } from '../shared/markdown-editor/markdown-edit
 import { SignalsBasicsComponent } from './samples/signals-basics/signals-basics.component';
 import { SignalsEventBusComponent } from './signals-event-bus/signals-event-bus.component';
 import { SignalsMenuComponent } from './signals-menu/signals-menu.component';
+import { FormControlComponent } from './samples/form-control/form-control.component';
 
 const demoRoutes: Routes = [
   {
@@ -69,6 +70,7 @@ const demoRoutes: Routes = [
 @NgModule({
   declarations: [
     DemoContainerComponent,
+    FormControlComponent,
     CreatingObservableComponent,
     MouseDomObservablesComponent,
     DebouncedSearchComponent,
