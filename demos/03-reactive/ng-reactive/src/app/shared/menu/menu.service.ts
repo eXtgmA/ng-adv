@@ -10,9 +10,10 @@ import { MenuItem } from './menu-item.model';
   providedIn: 'root',
 })
 export class MenuService {
-
   http = inject(HttpClient);
   breakpointObserver = inject(BreakpointObserver);
+  visible$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
+  position$: BehaviorSubject<MatDrawerMode> = new BehaviorSubject<MatDrawerMode>('side');
 
   constructor() {
     this.breakpointObserver
@@ -25,9 +26,6 @@ export class MenuService {
         })
       ).subscribe();
   }
-
-  visible$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
-  position$: BehaviorSubject<MatDrawerMode> = new BehaviorSubject<MatDrawerMode>('side');
 
   getSideNavVisible() {
     return this.visible$.asObservable();

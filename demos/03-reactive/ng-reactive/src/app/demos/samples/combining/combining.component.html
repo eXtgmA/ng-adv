@@ -2,9 +2,7 @@
 
 <mat-card appearance="outlined">
   <mat-card-header>
-    <mat-card-title>
-      Combine
-    </mat-card-title>
+    <mat-card-title> Combine </mat-card-title>
   </mat-card-header>
 
   <mat-card-content
@@ -12,21 +10,25 @@
     fxLayoutAlign="center start"
     class="cmdItems"
   >
-  <a mat-raised-button color="accent" (click)="useMerge()">merge()</a>
-  <a mat-raised-button color="accent" (click)="useZip()">zip()</a>
-    <a mat-raised-button color="accent" (click)="useConcat()">concat()</a>
-    <a mat-raised-button color="accent" (click)="useForkJoin()">forkJoin()</a>
-    <a mat-raised-button color="accent" (click)="leftJoin()">combineLatestWith() - left join</a>
+    <button mat-raised-button color="accent" (click)="useMerge()">
+      merge()
+    </button>
+    <button mat-raised-button color="accent" (click)="useZip()">zip()</button>
+    <button mat-raised-button color="accent" (click)="useConcat()">
+      concat()
+    </button>
+    <button mat-raised-button color="accent" (click)="useForkJoin()">
+      forkJoin()
+    </button>
+    <button mat-raised-button color="accent" (click)="leftJoin()">
+      combineLatestWith() - left join
+    </button>
   </mat-card-content>
 </mat-card>
 
 <mat-card appearance="outlined" fxLayout="column" fxLayoutGap="10px">
   <mat-card-header>
-    <mat-card-title>
-      Result
-    </mat-card-title>
+    <mat-card-title> Result </mat-card-title>
   </mat-card-header>
-  <mat-card-content>
-    See Console for output
-  </mat-card-content>
+  <mat-card-content> See Console for output </mat-card-content>
 </mat-card>

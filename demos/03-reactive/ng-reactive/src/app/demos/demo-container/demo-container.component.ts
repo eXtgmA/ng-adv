@@ -1,13 +1,13 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, effect, inject } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { filter, map, takeUntil } from 'rxjs/operators';
 import { MenuService } from 'src/app/shared/menu/menu.service';
+import { SidebarActions } from 'src/app/shared/side-panel/sidebar.actions';
+import { SidePanelService } from 'src/app/shared/side-panel/sidepanel.service';
 import { environment } from 'src/environments/environment';
 import { LoadingService } from '../../shared/loading/loading.service';
 import { DemoService } from '../demo-base/demo.service';
-import { SidePanelService } from 'src/app/shared/side-panel/sidepanel.service';
-import { SidebarActions } from 'src/app/shared/side-panel/sidebar.actions';
 
 @Component({
   selector: 'app-demo-container',
@@ -36,13 +36,21 @@ export class DemoContainerComponent implements OnInit {
     map(visible => { return visible ? { 'margin-left': '5px' } : {} })
   );
 
-  showMdEditor = this.eb
-    .getCommands()
-    .pipe(
-      map((action) => (action === SidebarActions.HIDE_MARKDOWN ? false : true))
-    );
+  currentCMD = this.eb.getCommands()
+  showMdEditor: boolean = false;
+
+  // RxJS Version using BehaviourSubject
+  // showMdEditor = this.eb
+  // .getCommands()
+  // .pipe(
+  //   map((action) => (action === SidebarActions.HIDE_MARKDOWN ? false : true))
+  // );
 
   constructor() {
+    effect(() => {
+      this.showMdEditor = this.currentCMD() === SidebarActions.HIDE_MARKDOWN ? false : true;
+    });
+
     this.ls.getLoading().pipe(takeUntil(this.destroy$)).subscribe((value) => {
       Promise.resolve(null).then(() => (this.isLoading = value));
     });
