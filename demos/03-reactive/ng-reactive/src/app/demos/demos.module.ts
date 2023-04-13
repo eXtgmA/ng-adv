@@ -43,6 +43,7 @@ const demoRoutes: Routes = [
 
     children: [
       { path: 'langfeatures', component: LangFeaturesComponent },
+      { path: 'signal-basics', component: SignalsBasicsComponent },
       { path: 'subjects', component: SubjectsComponent },
       { path: 'imperative', component: ImperativeComponent },
       { path: 'reactive', component: ReifiedReactiveComponent },

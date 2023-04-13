@@ -10,7 +10,6 @@ import {
   mergeMap,
   pluck,
   reduce,
-  scan,
   take,
   tap,
 } from 'rxjs/operators';
@@ -23,7 +22,7 @@ import { VouchersService } from '../../vouchers/voucher.service';
   styleUrls: ['./operators.component.scss'],
 })
 export class OperatorsComponent implements OnInit {
-  constructor(private vs: VouchersService) {}
+  constructor(private vs: VouchersService) { }
 
   response: any;
 
@@ -142,14 +141,6 @@ export class OperatorsComponent implements OnInit {
 
     from(arr)
       .pipe(reduce((acc, curr) => acc + curr, 0))
-      .subscribe((d) => console.log(d));
-  }
-
-  useScan() {
-    const arr = [1, 4, 6, 7, 9, 11];
-
-    from(arr)
-      .pipe(scan((acc, curr) => acc + curr, 0))
       .subscribe((d) => console.log(d));
   }
 

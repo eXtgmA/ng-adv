@@ -14,12 +14,19 @@
       "component": "AsyncPipeComponent"
     },
     {
-      "url": "creating",
-      "topicid": 2,
-      "title": "Creating Observables",
-      "component": "CreatingObservableComponent",
-      "visible": true,
-      "sortOrder": 2
+      "url": "debounced",
+      "title": "Debounced Search",
+      "component": "DebouncedSearchComponent"
+    },
+    {
+      "url": "mousedomobs",
+      "title": "Mouse & DOM Events",
+      "component": "MouseDomObservablesComponent"
+    },
+    {
+      "url": "actionstreams",
+      "title": "Action Streams",
+      "component": "ActionStreamsComponent"
     },
     {
       "url": "unsubscribe",
@@ -29,12 +36,9 @@
       "visible": true
     },
     {
-      "url": "subjects",
-      "topicid": 2,
-      "title": "Subjects",
-      "component": "SubjectsComponent",
-      "visible": true,
-      "sortOrder": "sdf"
+      "url": "signal-basics",
+      "title": "Signal Basics",
+      "component": "SignalsBasicsComponent"
     },
     {
       "url": "imperative",
@@ -51,6 +55,22 @@
       "visible": true
     },
     {
+      "url": "creating",
+      "topicid": 2,
+      "title": "Creating Observables",
+      "component": "CreatingObservableComponent",
+      "visible": true,
+      "sortOrder": 2
+    },
+    {
+      "url": "subjects",
+      "topicid": 2,
+      "title": "Subjects",
+      "component": "SubjectsComponent",
+      "visible": true,
+      "sortOrder": "sdf"
+    },
+    {
       "url": "marble-testing",
       "title": "Marble Testing",
       "component": "MarbleTestingComponent"
@@ -59,11 +79,6 @@
       "url": "operators",
       "title": "Base Operators",
       "component": "OperatorsComponent"
-    },
-    {
-      "url": "actionstreams",
-      "title": "Action Streams",
-      "component": "ActionStreamsComponent"
     },
     {
       "url": "caching",
@@ -89,16 +104,6 @@
       "url": "customops",
       "title": "Custom Operators",
       "component": "CustomOperatorsComponent"
-    },
-    {
-      "url": "debounced",
-      "title": "Debounced Search",
-      "component": "DebouncedSearchComponent"
-    },
-    {
-      "url": "mousedomobs",
-      "title": "Mouse & DOM Events",
-      "component": "MouseDomObservablesComponent"
     },
     {
       "url": "statefull",
