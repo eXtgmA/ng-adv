@@ -7,8 +7,6 @@ import {
   MatFormFieldDefaultOptions,
   MAT_FORM_FIELD_DEFAULT_OPTIONS,
 } from '@angular/material/form-field';
-import { FormlyModule } from '@ngx-formly/core';
-import { FormlyMaterialModule } from '@ngx-formly/material';
 import { MaterialModule } from '../material.module';
 import { MdRendererModule } from '../shared/markdown-renderer/md-renderer.module';
 import { SharedModule } from '../shared/shared.module';
@@ -35,7 +33,6 @@ import { BindingComponent } from './samples/host-binding-listener/binding/bindin
 import { HostBindingListenerComponent } from './samples/host-binding-listener/host-binding-listener.component';
 import { HoverListenerDirective } from './samples/host-binding-listener/hover-listener.directive';
 import { ReactiveNestedComponent } from './samples/nested-objects/reactive-nested.component';
-import { NgxFormlyComponent } from './samples/ngx-formly/ngx-formly.component';
 import { ReactiveFormsComponent } from './samples/reactive-forms/reactive-forms.component';
 import { ReactiveValidationComponent } from './samples/state-validators/reactive-validation.component';
 import { ClockComponent } from './samples/template-vs-container/clock/clock.component';
@@ -50,6 +47,9 @@ import { ContentProjectionComponent } from './samples/content-projection/content
 import { uxSplitComponent } from './samples/content-projection/ux-split/ux-split.component';
 import { uxButtonComponent } from './samples/content-projection/ux-button/ux-button.component';
 import { SplitPopupComponent } from './samples/content-projection/split-popup/split-popup.component';
+import { ContainerPresenterComponent } from './samples/container-presenter/container-presenter.component';
+import { PresenterListComponent } from './samples/container-presenter/presenter-list/presenter-list.component';
+import { PresenterEditComponent } from './samples/container-presenter/presenter-edit/presenter-edit.component';
 
 
 const appearance: MatFormFieldDefaultOptions = {
@@ -66,7 +66,6 @@ const appearance: MatFormFieldDefaultOptions = {
     FormArrayComponent,
     ReactiveValidationComponent,
     ReactiveCascadeComponent,
-    NgxFormlyComponent,
     ActionStreamsComponent,
     ReactiveNestedComponent,
     ControlValueAccessorComponent,
@@ -94,7 +93,10 @@ const appearance: MatFormFieldDefaultOptions = {
     BoxedDirective,
     uxSplitComponent,
     uxButtonComponent,
-    SplitPopupComponent
+    SplitPopupComponent,
+    ContainerPresenterComponent,
+    PresenterListComponent,
+    PresenterEditComponent
   ],
   imports: [
     CommonModule,
@@ -105,13 +107,7 @@ const appearance: MatFormFieldDefaultOptions = {
     MaterialModule,
     FlexLayoutModule,
     HttpClientModule,
-    MdRendererModule,
-    FormlyModule.forRoot({
-      validationMessages: [
-        { name: 'required', message: 'This field is required' },
-      ],
-    }),
-    FormlyMaterialModule,
+    MdRendererModule
   ],
   providers: [
     {

@@ -159,7 +159,6 @@
       }
     }
   },
-  "defaultProject": "ngdemoapp",
   "cli": {
     "analytics": "637494c2-de35-4c8a-a112-3acc3f3298de",
     "cache": {

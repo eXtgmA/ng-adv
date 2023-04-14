@@ -198,15 +198,15 @@
       "component": "ErrStateMatcherComponent",
       "visible": true,
       "sortOrder": 6
-    },   
+    },
     {
-      "url": "ngx-formly",
+      "url": "container-presenter",
       "topicid": 3,
-      "title": "Dynamic Forms - Formly",
-      "component": "NgxFormlyComponent",
+      "title": "Container / Presenter",
+      "component": "ContainerPresenterComponent",
       "visible": true,
-      "sortOrder": 8
-    }
+      "sortOrder": 2
+    },
   ],
   "skills": [
     { "id": "123", "name": "rxjs from api", "completed": true },

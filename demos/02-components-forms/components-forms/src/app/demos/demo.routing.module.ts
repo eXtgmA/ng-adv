@@ -10,7 +10,6 @@ import { FormControlComponent } from './samples/form-control/form-control.compon
 import { FormBuilderComponent } from './samples/forms-builder/forms-builder.component';
 import { GetRawValueComponent } from './samples/get-raw-value/get-raw-value.component';
 import { HostBindingListenerComponent } from './samples/host-binding-listener/host-binding-listener.component';
-import { NgxFormlyComponent } from './samples/ngx-formly/ngx-formly.component';
 import { ReactiveCascadeComponent } from './samples/cascade/reactive-cascade.component';
 import { ReactiveExplicitTypedExternalComponent } from './samples/explicit-typed-external/reactive-explicit-typed-external.component';
 import { ReactiveExplicitTypedComponent } from './samples/explicit-typed/reactive-explicit-typed.component';
@@ -27,6 +26,7 @@ import { FormErrorsComponent } from './samples/form-errors/form-errors.component
 import { ErrStateMatcherComponent } from './samples/err-state-matcher/err-state-matcher.component';
 import { DirectiveCompositionComponent } from './samples/directive-composition/directive-composition.component';
 import { ContentProjectionComponent } from './samples/content-projection/content-projection.component';
+import { ContainerPresenterComponent } from './samples/container-presenter/container-presenter.component';
 
 const demoRoutes: Routes = [
   {
@@ -50,6 +50,7 @@ const demoRoutes: Routes = [
       { path: 'reactivenested', component: ReactiveNestedComponent },
       { path: 'validation-typed', component: ReactiveTypedValidatonComponent },
       { path: 'content-projection', component: ContentProjectionComponent },
+      { path: 'container-presenter', component: ContainerPresenterComponent },
       { path: 'reactiveforms', component: ReactiveFormsComponent },
       { path: 'actionstream', component: ActionStreamsComponent },
       { path: 'formbuilder', component: FormBuilderComponent },
@@ -59,7 +60,6 @@ const demoRoutes: Routes = [
       { path: 'err-state-matcher', component: ErrStateMatcherComponent },
       { path: 'validation', component: ReactiveValidationComponent },
       { path: 'cascade', component: ReactiveCascadeComponent },
-      { path: 'ngx-formly', component: NgxFormlyComponent },
       { path: 'typedforms', component: ReactiveTypedComponent },
       { path: 'typedformsexplicit', component: ReactiveExplicitTypedComponent },
       {
