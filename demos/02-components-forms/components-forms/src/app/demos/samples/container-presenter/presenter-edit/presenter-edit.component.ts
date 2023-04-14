@@ -19,12 +19,6 @@ export class PresenterEditComponent {
     age: [this.person.age, [Validators.required, Validators.min(0), Validators.max(120)],],
   });
 
-  constructor() { }
-
-  ngOnInit() {
-    console.log(this.person);
-  }
-
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['person']) {
       this.personForm.patchValue(changes['person'].currentValue);
@@ -32,7 +26,8 @@ export class PresenterEditComponent {
   }
 
   doSave() {
-    this.savePerson.emit(this.person);
+    let p = { ... this.person, ... this.personForm.value };
+    this.savePerson.emit(p);
   }
 
   doDelete() {
