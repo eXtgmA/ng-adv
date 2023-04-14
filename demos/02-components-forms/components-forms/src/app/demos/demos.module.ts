@@ -47,6 +47,7 @@ import { ContentProjectionComponent } from './samples/content-projection/content
 import { uxSplitComponent } from './samples/content-projection/ux-split/ux-split.component';
 import { uxButtonComponent } from './samples/content-projection/ux-button/ux-button.component';
 import { SplitPopupComponent } from './samples/content-projection/split-popup/split-popup.component';
+import { ContainerPresenterComponent } from './samples/container-presenter/container-presenter.component';
 
 
 const appearance: MatFormFieldDefaultOptions = {
@@ -90,7 +91,8 @@ const appearance: MatFormFieldDefaultOptions = {
     BoxedDirective,
     uxSplitComponent,
     uxButtonComponent,
-    SplitPopupComponent
+    SplitPopupComponent,
+    ContainerPresenterComponent
   ],
   imports: [
     CommonModule,
