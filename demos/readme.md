@@ -32,13 +32,15 @@
 
 - Recap: Observables, Operators & Subjects
 - Data- vs Action-Streams
+- Mouse & DOM Events as Observables
 - Unsubscribing: When & Patterns
-- Understanding Marble Diagrams & Debugging Observables
+- Introduction to Signals
+- Signals vs Observables: When to use which
 - Imperative vs Reified Reactive Programming
+- Understanding Marble Diagrams & Debugging Observables
 - Base Operators: Mapping, Filtering, Merging, Scanning, ...
 - Implementing Side Effects using tap
 - Marble-testing RxJs
-- Higher Order Mapping Operators
 - Data Composition - Joining Observable Streams
 - Data Caching & Invalidation
 - Retry & Error Handling Strategies

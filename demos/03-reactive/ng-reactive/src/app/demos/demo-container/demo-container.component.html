@@ -26,7 +26,7 @@
       <div class="gdToolbar">
         <mat-toolbar color="accent">
           <mat-toolbar-row>
-            <h4>{{ header }}</h4>
+            <h4>{{ selectedComponent | async }}</h4>
           </mat-toolbar-row>
         </mat-toolbar>
       </div>
@@ -34,7 +34,7 @@
         <app-loading *ngIf="isLoading"></app-loading>
       </div>
       <div class="gdWorkbench"><router-outlet></router-outlet></div>
-      <div class="gdEditor" *ngIf="showMdEditor | async">
+      <div class="gdEditor" *ngIf="showMdEditor ">
         <app-markdown-editor></app-markdown-editor>
       </div>
       <div class="gdSidebar">

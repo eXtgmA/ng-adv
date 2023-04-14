@@ -32,6 +32,12 @@ import { ListComponent } from './samples/statefull/list/list.component';
 import { KpiComponent } from './samples/statefull/kpi/kpi.component';
 import { DemoRowComponent } from './demo-row/demo-row.component';
 import { MarkdownEditorComponent } from '../shared/markdown-editor/markdown-editor.component';
+import { SignalsBasicsComponent } from './samples/signals-basics/signals-basics.component';
+import { SignalsEventBusComponent } from './signals-event-bus/signals-event-bus.component';
+import { SignalsMenuComponent } from './signals-menu/signals-menu.component';
+import { FormControlComponent } from './samples/form-control/form-control.component';
+import { DestroyRefComponent } from './samples/destroy-ref/destroy-ref.component';
+import { TakeUntilDestroyedComponent } from './samples/take-until-destroyed/take-until-destroyed.component';
 
 const demoRoutes: Routes = [
   {
@@ -40,6 +46,7 @@ const demoRoutes: Routes = [
 
     children: [
       { path: 'langfeatures', component: LangFeaturesComponent },
+      { path: 'signal-basics', component: SignalsBasicsComponent },
       { path: 'subjects', component: SubjectsComponent },
       { path: 'imperative', component: ImperativeComponent },
       { path: 'reactive', component: ReifiedReactiveComponent },
@@ -65,6 +72,7 @@ const demoRoutes: Routes = [
 @NgModule({
   declarations: [
     DemoContainerComponent,
+    FormControlComponent,
     CreatingObservableComponent,
     MouseDomObservablesComponent,
     DebouncedSearchComponent,
@@ -87,7 +95,12 @@ const demoRoutes: Routes = [
     EventbusComponent,
     ListComponent,
     KpiComponent,
-    DemoRowComponent
+    DemoRowComponent,
+    SignalsBasicsComponent,
+    SignalsEventBusComponent,
+    SignalsMenuComponent,
+    DestroyRefComponent,
+    TakeUntilDestroyedComponent
   ],
   imports: [
     CommonModule,

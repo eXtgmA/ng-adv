@@ -1,8 +1,6 @@
 <mat-card appearance="outlined">
   <mat-card-header>
-    <mat-card-title>
-      Simple Operator Examples
-    </mat-card-title>
+    <mat-card-title> Simple Operator Examples </mat-card-title>
   </mat-card-header>
 
   <mat-card-content
@@ -10,44 +8,41 @@
     fxLayoutAlign="center start"
     class="cmdItems"
   >
-    <a mat-raised-button color="accent" (click)="useMap()">map()</a>
-    <a mat-raised-button color="accent" (click)="useTap()">tap()</a>
-    <a mat-raised-button color="accent" (click)="useMapAndTap()"
-      >map() & tap()</a
-    >
-    <a mat-raised-button color="accent" (click)="useFindArr()"
-      >Array.find() to return first item</a
-    >
-    <a mat-raised-button color="accent" (click)="useFilterArr()"
-      >Array.filter() to return an Array</a
-    >
-    <a mat-raised-button color="accent" (click)="useFind()"
-      >find() to return first item</a
-    >
-    <a mat-raised-button color="accent" (click)="useFilter()"
-      >filter() to return an Array</a
-    >
-    <a mat-raised-button color="accent" (click)="useTake()"
-      >take() to return an Array</a
-    >
-    <a mat-raised-button color="accent" (click)="useInterval()"
-      >interval() to set an Inverval</a
-    >
-    <a mat-raised-button color="accent" (click)="useDelay()"
-      >delay() to wait for a periode</a
-    >
-    <a mat-raised-button color="accent" (click)="useScan()"
-    >scan() to sum Observables
-    </a>
-    <a mat-raised-button color="accent" (click)="useReduce()"
-      >reduce() to sum Observables
-    </a>
-    <a mat-raised-button color="accent" (click)="usePluck()"
-      >pluck() to extract from obs
-    </a>
-    <a mat-raised-button color="accent" (click)="useAjax()"
-      >ajax() to creact an obs from request
-    </a>
+    <button mat-raised-button color="accent" (click)="useMap()">map()</button>
+    <button mat-raised-button color="accent" (click)="useTap()">tap()</button>
+    <button mat-raised-button color="accent" (click)="useMapAndTap()">
+      map() & tap()
+    </button>
+    <button mat-raised-button color="accent" (click)="useFindArr()">
+      Array.find() to return first item
+    </button>
+    <button mat-raised-button color="accent" (click)="useFilterArr()">
+      Array.filter() to return an Array
+    </button>
+    <button mat-raised-button color="accent" (click)="useFind()">
+      find() to return first item
+    </button>
+    <button mat-raised-button color="accent" (click)="useFilter()">
+      filter() to return an Array
+    </button>
+    <button mat-raised-button color="accent" (click)="useTake()">
+      take() to return an Array
+    </button>
+    <button mat-raised-button color="accent" (click)="useInterval()">
+      interval() to set an Inverval
+    </button>
+    <button mat-raised-button color="accent" (click)="useDelay()">
+      delay() to wait for a periode
+    </button>
+    <button mat-raised-button color="accent" (click)="useReduce()">
+      reduce() to sum Observables
+    </button>
+    <button mat-raised-button color="accent" (click)="usePluck()">
+      pluck() to extract from obs
+    </button>
+    <button mat-raised-button color="accent" (click)="useAjax()">
+      ajax() to creact an obs from request
+    </button>
 
     <div fxLayout="row" fxLayoutAlign="center center"></div>
   </mat-card-content>
@@ -55,11 +50,7 @@
 
 <mat-card appearance="outlined" fxLayout="column" fxLayoutGap="10px">
   <mat-card-header>
-    <mat-card-title>
-      Result
-    </mat-card-title>
+    <mat-card-title> Result </mat-card-title>
   </mat-card-header>
-  <mat-card-content>
-    See console for output
-  </mat-card-content>
+  <mat-card-content> See console for output </mat-card-content>
 </mat-card>
