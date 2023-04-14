@@ -1,1 +1,11 @@
-<p>container-presenter works!</p>
+<app-presenter-list
+  [persons]="persons"
+  (personSelected)="onPersonSelected($event)"
+></app-presenter-list>
+
+<app-presenter-edit
+  *ngIf="current"
+  [person]="current"
+  [editMode]="true"
+  (savePerson)="onPersonSaved($event)"
+></app-presenter-edit>

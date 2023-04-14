@@ -48,6 +48,8 @@ import { uxSplitComponent } from './samples/content-projection/ux-split/ux-split
 import { uxButtonComponent } from './samples/content-projection/ux-button/ux-button.component';
 import { SplitPopupComponent } from './samples/content-projection/split-popup/split-popup.component';
 import { ContainerPresenterComponent } from './samples/container-presenter/container-presenter.component';
+import { PresenterListComponent } from './samples/container-presenter/presenter-list/presenter-list.component';
+import { PresenterEditComponent } from './samples/container-presenter/presenter-edit/presenter-edit.component';
 
 
 const appearance: MatFormFieldDefaultOptions = {
@@ -92,7 +94,9 @@ const appearance: MatFormFieldDefaultOptions = {
     uxSplitComponent,
     uxButtonComponent,
     SplitPopupComponent,
-    ContainerPresenterComponent
+    ContainerPresenterComponent,
+    PresenterListComponent,
+    PresenterEditComponent
   ],
   imports: [
     CommonModule,
