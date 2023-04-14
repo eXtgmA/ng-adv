@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges, inject } from '@angular/core';
 import { Person } from '../../person/person.model';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-presenter-edit',
@@ -8,8 +9,15 @@ import { Person } from '../../person/person.model';
 })
 export class PresenterEditComponent {
   @Input() person: Person = new Person();
-  @Input() editMode: boolean = false;
   @Output() savePerson: EventEmitter<Person> = new EventEmitter<Person>();
+
+  fb = inject(FormBuilder);
+
+  personForm: FormGroup = this.fb.group({
+    id: [this.person.id],
+    name: [this.person.name, [Validators.required, Validators.minLength(3)]],
+    age: [this.person.age, [Validators.required, Validators.min(0), Validators.max(120)],],
+  });
 
   constructor() { }
 
@@ -19,7 +27,7 @@ export class PresenterEditComponent {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['person']) {
-      console.log('receiving updated person:', changes['person'].currentValue);
+      this.personForm.patchValue(changes['person'].currentValue);
     }
   }
 

@@ -73,14 +73,6 @@
       "sortOrder": 2
     },
     {
-      "url": "container-presenter",
-      "topicid": 3,
-      "title": "Container / Presenter",
-      "component": "ContainerPresenterComponent",
-      "visible": true,
-      "sortOrder": 2
-    },
-    {
       "url": "formcontrol",
       "topicid": 3,
       "title": "FormControl",
@@ -206,7 +198,15 @@
       "component": "ErrStateMatcherComponent",
       "visible": true,
       "sortOrder": 6
-    }
+    },
+    {
+      "url": "container-presenter",
+      "topicid": 3,
+      "title": "Container / Presenter",
+      "component": "ContainerPresenterComponent",
+      "visible": true,
+      "sortOrder": 2
+    },
   ],
   "skills": [
     { "id": "123", "name": "rxjs from api", "completed": true },
