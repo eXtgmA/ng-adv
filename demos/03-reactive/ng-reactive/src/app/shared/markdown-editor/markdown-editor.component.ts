@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 
 @Component({
@@ -8,11 +8,6 @@ import { MatCardModule } from '@angular/material/card';
   templateUrl: './markdown-editor.component.html',
   styleUrls: ['./markdown-editor.component.scss']
 })
-export class MarkdownEditorComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+export class MarkdownEditorComponent {
 
 }

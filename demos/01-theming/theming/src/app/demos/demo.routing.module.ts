@@ -22,7 +22,7 @@ const demoRoutes: Routes = [
       { path: 'table', component: TableComponent },
       { path: 'card', component: CardComponent },
       { path: 'projection', component: ContentProjectionComponent },
-      { path: 'popup', component: PopupContainerComponent },
+      { path: 'mat-overrides', component: PopupContainerComponent },
       { path: 'bootstrap', component: MaterialVsBootstrapComponent },
       { path: 'multi-theme', component: MultiThemeComponent },
       { path: 'feedback', component: VisualFeedbackComponent },

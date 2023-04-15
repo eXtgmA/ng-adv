@@ -6,6 +6,8 @@ import { MenuService } from 'src/app/shared/menu/menu.service';
 import { environment } from 'src/environments/environment';
 import { LoadingService } from '../../shared/loading/loading.service';
 import { DemoService } from '../demo-base/demo.service';
+import { SidePanelService } from 'src/app/shared/side-panel/sidepanel.service';
+import { SidebarActions } from 'src/app/shared/side-panel/sidebar.actions';
 
 @Component({
   selector: 'app-demo-container',
@@ -19,6 +21,7 @@ export class DemoContainerComponent implements OnInit {
   ds = inject(DemoService);
   ms = inject(MenuService);
   ls = inject(LoadingService);
+  eb = inject(SidePanelService);
 
   destroy$ = new Subject();
   title: string = environment.title;
@@ -32,6 +35,12 @@ export class DemoContainerComponent implements OnInit {
   workbenchMargin = this.sidenavVisible.pipe(
     map(visible => { return visible ? { 'margin-left': '5px' } : {} })
   );
+
+  showMdEditor = this.eb
+    .getCommands()
+    .pipe(
+      map((action) => (action === SidebarActions.HIDE_MARKDOWN ? false : true))
+    );
 
   constructor() {
     this.ls.getLoading().pipe(takeUntil(this.destroy$)).subscribe((value) => {

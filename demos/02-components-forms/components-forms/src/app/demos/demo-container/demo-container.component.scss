@@ -34,14 +34,16 @@ mat-toolbar {
   grid-template-areas:
     "toolbar toolbar"
     "loading loading"
-    "workbench sidebar";
+    "workbench sidebar"
+    "mdeditor sidebar";
 
     @media only screen and (max-width: 960px) {
     grid-template-columns: auto;
     grid-template-areas:
       "toolbar"
       "loading"
-      "workbench";
+      "workbench"
+      "mdeditor";
   }
 }
 
@@ -63,6 +65,11 @@ mat-toolbar {
 
 .gdWorkbench {
   grid-area: workbench;
+}
+
+.gdEditor {
+  grid-area: mdeditor;
+  align-self: flex-end;
 }
 
 // list

@@ -5,6 +5,8 @@
 
     ![edit-form](_images/edit-form.png)
 
+> Note: You can take the following components as a reference: https://github.com/arambazamba/ng-adv/tree/v16/demos/02-components-forms/components-forms/src/app/demos/samples/container-presenter    
+
 ## Guide
 
 -   Add the following db.json to the root of the project:

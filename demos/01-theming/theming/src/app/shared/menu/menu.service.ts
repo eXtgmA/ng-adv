@@ -4,6 +4,7 @@ import { Injectable, inject } from '@angular/core';
 import { MatDrawerMode } from '@angular/material/sidenav';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { MenuItem } from './menu-item.model';
 
 @Injectable({
@@ -53,6 +54,6 @@ export class MenuService {
   }
 
   getTopItems(): Observable<MenuItem[]> {
-    return this.http.get<MenuItem[]>('/assets/top-items.json');
+    return this.http.get<MenuItem[]>(`${environment.apiUrl}top-links`);
   }
 }

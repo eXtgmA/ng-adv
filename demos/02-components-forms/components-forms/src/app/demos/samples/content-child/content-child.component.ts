@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-content-child',
@@ -6,5 +6,5 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./content-child.component.scss'],
 })
 export class ContentChildComponent {
-  constructor() {}
+  constructor() { }
 }

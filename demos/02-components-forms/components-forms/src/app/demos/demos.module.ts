@@ -22,7 +22,6 @@ import { NumberPickerComponent } from './samples/control-value-accessor/number-p
 import { BoxedDirective } from './samples/directive-composition/boxed.directive';
 import { DirectiveCompositionComponent } from './samples/directive-composition/directive-composition.component';
 import { ErrStateMatcherComponent } from './samples/err-state-matcher/err-state-matcher.component';
-import { ReactiveExplicitTypedExternalComponent } from './samples/explicit-typed-external/reactive-explicit-typed-external.component';
 import { ReactiveExplicitTypedComponent } from './samples/explicit-typed/reactive-explicit-typed.component';
 import { FormArrayComponent } from './samples/form-array/form-array.component';
 import { FormControlComponent } from './samples/form-control/form-control.component';
@@ -74,7 +73,6 @@ const appearance: MatFormFieldDefaultOptions = {
     TypedNonnullableComponent,
     ReactiveExplicitTypedComponent,
     GetRawValueComponent,
-    ReactiveExplicitTypedExternalComponent,
     BootstrapStandaloneComponent,
     HostBindingListenerComponent,
     TemplateVsContainerComponent,

@@ -3,6 +3,6 @@ export const environment = {
   authEnabled: false,
   title: 'Theming',
   markdownPath: '/assets/markdown/',
-  apiUrl: 'https://localhost:5000/api/',
+  apiUrl: 'http://localhost:3000/',
   demosApi: 'http://localhost:3000/demos',
 };

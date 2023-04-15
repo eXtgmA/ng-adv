@@ -27,6 +27,7 @@ import { ClassicThemingComponent } from './samples/material-vs-bootstrap/classic
 import { AlternativeThemingComponent } from './samples/material-vs-bootstrap/alternative-theming/alternative-theming.component';
 import { MdcMigrationComponent } from './samples/mdc-migration/mdc-migration.component';
 import { NgOptimizedImageComponent } from './samples/ng-optimized-image/ng-optimized-image.component';
+import { MarkdownEditorComponent } from '../shared/markdown-editor/markdown-editor.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { NgOptimizedImageComponent } from './samples/ng-optimized-image/ng-optim
     MarkdownModule.forRoot({
       loader: HttpClient,
     }),
+    MarkdownEditorComponent
   ],
   providers: [SkillsService],
 })
-export class DemosModule {}
+export class DemosModule { }

@@ -1,5 +1,9 @@
 <mat-sidenav-container>
-  <mat-sidenav #sidenav [opened]="sidenavVisible | async" [mode]="(sidenavMode | async) ?? 'side' ">
+  <mat-sidenav
+    #sidenav
+    [opened]="sidenavVisible | async"
+    [mode]="(sidenavMode | async) ?? 'side'"
+  >
     <mat-toolbar color="accent">
       <mat-toolbar-row>
         {{ title }}
@@ -9,14 +13,16 @@
       <mat-toolbar class="sidenav-menu">
         <span>Please select:</span>
       </mat-toolbar>
-        <mat-list-item role="listitem" *ngFor="let item of demos | async" [routerLink]="['./' + item.url]">{{ item.title }}</mat-list-item>
+      <mat-list-item
+        role="listitem"
+        *ngFor="let item of demos | async"
+        [routerLink]="['./' + item.url]"
+        >{{ item.title }}</mat-list-item
+      >
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <div
-    class="gdSidenavContent"
-    [ngStyle]="workbenchMargin | async"
-  >
+    <div class="gdSidenavContent" [ngStyle]="workbenchMargin | async">
       <div class="gdToolbar">
         <mat-toolbar color="accent">
           <mat-toolbar-row>
@@ -28,6 +34,9 @@
         <app-loading *ngIf="isLoading"></app-loading>
       </div>
       <div class="gdWorkbench"><router-outlet></router-outlet></div>
+      <div class="gdEditor" *ngIf="showMdEditor | async">
+        <app-markdown-editor></app-markdown-editor>
+      </div>
       <div class="gdSidebar">
         <app-side-panel></app-side-panel>
       </div>

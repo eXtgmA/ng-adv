@@ -12,7 +12,7 @@ import {
   styleUrls: ['./projector.component.scss'],
 })
 export class ProjectorComponent implements AfterContentInit {
-  @ContentChild('mycomment') divComment: ElementRef | null = null;
+  @ContentChild('comment') divComment: ElementRef | null = null;
 
   ngAfterContentInit(): void {
     console.log('the comment: ', this.divComment?.nativeElement);
