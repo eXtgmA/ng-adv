@@ -55,9 +55,9 @@
       "sortOrder": 4
     },
     {
-      "url": "skills",
+      "url": "ngrx-data",
       "title": "@ngrx/data",
-      "component": "SkillsComponent",
+      "component": "NgrxDataComponent",
       "id": 6,
       "topicid": 1,
       "visible": true,
@@ -156,6 +156,20 @@
       "title": "Other Placeholder",
       "comment": "abc",
       "saved": "2020-09-16T20:10:06.925Z"
+    }
+  ],
+  "top-links": [
+    {
+      "label": "Home",
+      "url": ""
+    },
+    {
+      "label": "Demos",
+      "url": "demos"
+    },
+    {
+      "label": "Skills",
+      "url": "skills"
     }
   ]
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { StatefulDemoService } from '../../demos/samples/statefull/stateful-demo.service';
 import { SnackbarService } from '../snackbar/snackbar.service';
 import { ThemeService } from '../theme/theme.service';
 import { SidebarActions } from './sidebar.actions';
@@ -15,7 +14,6 @@ export class SidePanelComponent implements OnInit {
     private sns: SnackbarService,
     private eb: SidePanelService,
     private ts: ThemeService,
-    private service: StatefulDemoService
   ) { }
 
   editorDisplayed: boolean = false;
@@ -39,17 +37,5 @@ export class SidePanelComponent implements OnInit {
 
   showUpload() {
     this.sns.displayAlert('Info', 'Uploading to Cloud');
-  }
-
-  addDemo() {
-    this.service.addDemo({
-      url: 'mock',
-      title: 'The added item',
-      component: 'StatefullComponentxxx',
-      id: 111,
-      topicid: 1,
-      visible: true,
-      sortOrder: 0,
-    });
   }
 }

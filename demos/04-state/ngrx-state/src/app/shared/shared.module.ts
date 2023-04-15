@@ -6,16 +6,14 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MarkdownModule } from 'ngx-markdown';
 import { MaterialModule } from '../material.module';
-import { FooterComponent } from './footer/footer.component';
 import { IntroComponent } from './intro/intro.component';
+import { LoadingComponent } from './loading/loading.component';
 import { MarkdownRendererComponent } from './markdown-renderer/markdown-renderer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidePanelComponent } from './side-panel/side-panel.component';
-import { LoadingComponent } from './loading/loading.component';
 
 const comps = [
   NavbarComponent,
-  FooterComponent,
   MarkdownRendererComponent,
   IntroComponent,
   SidePanelComponent,
@@ -37,4 +35,4 @@ const comps = [
   declarations: comps,
   exports: comps,
 })
-export class SharedModule {}
+export class SharedModule { }

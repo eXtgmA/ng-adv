@@ -12,14 +12,15 @@ import { SkillsEntityService } from '../skills-entity.service';
 })
 export class SkillsContainerComponent {
   fcToggle = new FormControl(true);
+
   skills = this.skillsService.entities$.pipe(
     combineLatestWith(this.fcToggle.valueChanges.pipe(startWith(true))),
     map(([skills, showAll]) => {
-      return showAll ? skills : skills.filter((sk) => sk.completed === showAll);
+      return showAll ? skills : skills.filter((sk: Skill) => sk.completed === showAll);
     })
   );
 
-  constructor(private skillsService: SkillsEntityService) {}
+  constructor(private skillsService: SkillsEntityService) { }
 
   ngOnInit(): void {
     this.skillsService.getAll();

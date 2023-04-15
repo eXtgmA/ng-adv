@@ -20,13 +20,8 @@ import { DemoListComponent } from './samples/demos-list/demo-list/demo-list.comp
 import { DemoRowComponent } from './samples/demos-list/demo-row/demo-row.component';
 import { DemosStateComponent } from './samples/demos-state/demos-state.component';
 import { EffectsComponent } from './samples/effects/effects.component';
-import { EventbusComponent } from './samples/eventbus/eventbus.component';
 import { FacadesComponent } from './samples/facades/facades.component';
 import { SelectorsComponent } from './samples/selectors/selectors.component';
-import { SkillsComponent } from './samples/skills/skills.component';
-import { KpiComponent } from './samples/statefull/kpi/kpi.component';
-import { ListComponent } from './samples/statefull/list/list.component';
-import { StatefullComponent } from './samples/statefull/statefull.component';
 import { DemosEffects } from './state/demos.effects';
 import { demoReducer, demosFeatureKey } from './state/demos.reducer';
 import { ChangeDetectionComponent } from './samples/change-detection/change-detection.component';
@@ -35,31 +30,28 @@ import { ChangeDetectorRefComponent } from './samples/change-detector-ref/change
 import { DetectorChildComponent } from './samples/change-detector-ref/detector-child/detector-child.component';
 import { ChangeDetectionProfileComponent } from './samples/change-detection-profile/change-detection-profile.component';
 import { ComponentStoreComponent } from './samples/component-store/component-store.component';
+import { NgrxDataComponent } from './samples/ngrx-data/ngrx-data.component';
 
 @NgModule({
   declarations: [
     DemoContainerComponent,
-    StatefullComponent,
     DemoRowComponent,
-    EventbusComponent,
     DemoFilterComponent,
     DemoEditComponent,
     DemoListComponent,
-    KpiComponent,
     AppStateComponent,
-    SkillsComponent,
     DemoListHostComponent,
     DemosStateComponent,
     SelectorsComponent,
     FacadesComponent,
     EffectsComponent,
-    ListComponent,
     ChangeDetectionComponent,
     ContainerPresenterNgrxComponent,
     ChangeDetectorRefComponent,
     DetectorChildComponent,
     ChangeDetectionProfileComponent,
     ComponentStoreComponent,
+    NgrxDataComponent,
   ],
   imports: [
     CommonModule,
@@ -79,4 +71,4 @@ import { ComponentStoreComponent } from './samples/component-store/component-sto
   ],
   providers: [],
 })
-export class DemosModule {}
+export class DemosModule { }
