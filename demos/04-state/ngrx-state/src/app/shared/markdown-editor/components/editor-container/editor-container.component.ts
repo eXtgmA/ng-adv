@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommentItem } from '../../comment.model';
 import { EditorFacade } from '../../state/editor.facade';
 
@@ -8,8 +8,7 @@ import { EditorFacade } from '../../state/editor.facade';
   styleUrls: ['./editor-container.component.scss'],
 })
 export class EditorContainerComponent implements OnInit {
-  constructor(private ef: EditorFacade) {}
-
+  ef = inject(EditorFacade)
   comments = this.ef.getComments();
   editorEdit = false;
   current: CommentItem | null = null;

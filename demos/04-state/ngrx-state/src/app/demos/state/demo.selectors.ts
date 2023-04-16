@@ -13,6 +13,11 @@ export const getSelected = createSelector(
   (state: DemoState) => state.selected
 );
 
+export const hasLoaded = createSelector(
+  getDemoState,
+  (state: DemoState) => state.loaded
+);
+
 // Note: Default Selectors provided by Entity
 export const { selectAll, selectEntities, selectIds, selectTotal } =
   demosAdapter.getSelectors();

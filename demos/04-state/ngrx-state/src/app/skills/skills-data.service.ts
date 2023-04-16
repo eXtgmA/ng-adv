@@ -14,7 +14,7 @@ export class SkillsDataService extends DefaultDataService<Skill> {
   }
 
   override getAll() {
-    return this.http.get<Skill[]>(environment.skillsApi).pipe(
+    return this.http.get<Skill[]>(`${environment.apiUrl}skills`).pipe(
       map((data: Skill[]) => {
         if (!data) {
           return [];
@@ -27,7 +27,7 @@ export class SkillsDataService extends DefaultDataService<Skill> {
   }
 
   override add(skill: Skill): Observable<Skill> {
-    return this.http.post<Skill>(environment.skillsApi, skill).pipe(
+    return this.http.post<Skill>(`${environment.apiUrl}skills`, skill).pipe(
       map((data) => {
         return { ...skill, id: data.id };
       })
@@ -35,13 +35,13 @@ export class SkillsDataService extends DefaultDataService<Skill> {
   }
 
   override update(skill: Update<Skill>): Observable<Skill> {
-    return this.http.put<Skill>(`${environment.skillsApi}/${skill.id}`, {
+    return this.http.put<Skill>(`${environment.apiUrl}skills/${skill.id}`, {
       ...skill.changes,
     });
   }
 
   override delete(id: string): Observable<string> {
-    return this.http.delete(`${environment.skillsApi}/${id}`).pipe(
+    return this.http.delete(`${environment.apiUrl}skills/${id}`).pipe(
       map((data) => {
         return id;
       })

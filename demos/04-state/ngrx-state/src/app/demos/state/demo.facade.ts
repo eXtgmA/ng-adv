@@ -1,33 +1,30 @@
-import { Injectable } from '@angular/core';
-import { DemoState } from './demos.reducer';
+import { Injectable, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
-import {
-  applyFilter,
-  loadDemos,
-  deleteDemo,
-  setSelected,
-  addDemo,
-  updateDemo,
-} from './demos.actions';
-import { getAllDemos, getFilter, getSelected } from './demo.selectors';
-import { tap } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 import { DemoItem } from '../demo-base/demo-item.model';
-import { toggleVisiblity } from './demos.actions';
+import { getAllDemos, getFilter, getSelected, hasLoaded } from './demo.selectors';
+import { DemoState } from './demos.reducer';
+import { DemoActions } from './demos.actions';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DemoFacade {
-  constructor(private store: Store<DemoState>) {}
+  store = inject(Store<DemoState>)
+  init() {
+    this.hasLoaded().subscribe((loaded) => {
+      if (!loaded) {
+        this.store.dispatch(DemoActions.loaddemos());
+      }
+    });
+  }
 
-  initData() {
-    this.store.dispatch(loadDemos());
+  hasLoaded() {
+    return this.store.select(hasLoaded).pipe(take(1));
   }
 
   getDemos() {
-    return this.store
-      .select(getAllDemos)
-      .pipe(tap((data) => console.log('data received from store', data)));
+    return this.store.select(getAllDemos)
   }
 
   getSelectedDemo() {
@@ -35,27 +32,23 @@ export class DemoFacade {
   }
 
   deleteDemo(item: DemoItem) {
-    this.store.dispatch(deleteDemo({ item }));
+    this.store.dispatch(DemoActions.deletedemo({ item }));
   }
 
   addDemo(item: DemoItem) {
-    this.store.dispatch(addDemo({ item }));
+    this.store.dispatch(DemoActions.adddemo({ item }));
   }
 
   updateDemo(item: DemoItem) {
-    this.store.dispatch(updateDemo({ item }));
+    this.store.dispatch(DemoActions.updatedemo({ item }));
   }
 
   selectDemo(item: DemoItem) {
-    this.store.dispatch(setSelected({ item }));
-  }
-
-  changeVisibility(item: DemoItem) {
-    this.store.dispatch(toggleVisiblity({ item }));
+    this.store.dispatch(DemoActions.setselected({ item }));
   }
 
   setFilter(filter: string) {
-    this.store.dispatch(applyFilter({ filter }));
+    this.store.dispatch(DemoActions.applyfilter({ filter }));
   }
 
   getFilter() {

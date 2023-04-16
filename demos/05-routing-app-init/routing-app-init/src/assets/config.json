@@ -1,7 +1,6 @@
 {
-  "authEnabled": false,
-  "title": "Routing & App Init",
+  "authEnabled": true,
+  "title": "My App",
   "markdownPath": "/assets/markdown/",
-  "apiUrl": "http://localhost:3000/",
-  "demosApi": "http://localhost:3000/demos"
+  "apiUrl": "http://localhost:3000/api"
 }

@@ -82,10 +82,10 @@ import { GlobalErrService } from './error/global-err-handler';
       deps: [ConfigService],
       multi: true,
     },
-    {
-      provide: ErrorHandler,
-      useClass: GlobalErrService,
-    },
+    // {
+    //   provide: ErrorHandler,
+    //   useClass: GlobalErrService,
+    // },
     // {
     //   provide: HTTP_INTERCEPTORS,
     //   useClass: AuthInterceptorService,

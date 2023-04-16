@@ -2,12 +2,12 @@ import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { filter, map, takeUntil } from 'rxjs/operators';
-import { MenuService } from 'src/app/shared/menu/menu.service';
 import { environment } from 'src/environments/environment';
 import { LoadingService } from '../../shared/loading/loading.service';
 import { DemoService } from '../demo-base/demo.service';
 import { SidePanelService } from 'src/app/shared/side-panel/sidepanel.service';
 import { SidebarActions } from 'src/app/shared/side-panel/sidebar.actions';
+import { SideNavService } from '../../shared/sidenav/sidenav.service';
 
 @Component({
   selector: 'app-demo-container',
@@ -19,7 +19,7 @@ export class DemoContainerComponent implements OnInit {
   router = inject(Router);
   route = inject(ActivatedRoute);
   ds = inject(DemoService);
-  ms = inject(MenuService);
+  nav = inject(SideNavService);
   ls = inject(LoadingService);
   eb = inject(SidePanelService);
 
@@ -30,16 +30,16 @@ export class DemoContainerComponent implements OnInit {
 
   isLoading = false;
 
-  sidenavMode = this.ms.getSideNavPosition();
-  sidenavVisible = this.ms.getSideNavVisible();
+  sidenavMode = this.nav.getSideNavPosition();
+  sidenavVisible = this.nav.getSideNavVisible();
   workbenchMargin = this.sidenavVisible.pipe(
-    map(visible => { return visible ? { 'margin-left': '5px' } : {} })
+    map((visible: boolean) => { return visible ? { 'margin-left': '5px' } : {} })
   );
 
   showMdEditor = this.eb
     .getCommands()
     .pipe(
-      map((action) => (action === SidebarActions.HIDE_MARKDOWN ? false : true))
+      map((action: SidebarActions) => (action === SidebarActions.HIDE_MARKDOWN ? false : true))
     );
 
   constructor() {

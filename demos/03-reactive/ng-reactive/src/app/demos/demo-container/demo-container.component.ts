@@ -2,13 +2,12 @@ import { Component, DestroyRef, effect, inject } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { filter, map, takeUntil } from 'rxjs/operators';
-import { MenuService } from 'src/app/shared/menu/menu.service';
-import { SidebarActions } from 'src/app/shared/side-panel/sidebar.actions';
-import { SidePanelService } from 'src/app/shared/side-panel/sidepanel.service';
 import { environment } from 'src/environments/environment';
 import { LoadingService } from '../../shared/loading/loading.service';
 import { DemoService } from '../demo-base/demo.service';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { SidePanelService } from 'src/app/shared/side-panel/sidepanel.service';
+import { SidebarActions } from 'src/app/shared/side-panel/sidebar.actions';
+import { SideNavService } from '../../shared/sidenav/sidenav.service';
 
 @Component({
   selector: 'app-demo-container',
@@ -20,7 +19,7 @@ export class DemoContainerComponent {
   route = inject(ActivatedRoute);
   destroyRef = inject(DestroyRef);
   ds = inject(DemoService);
-  ms = inject(MenuService);
+  nav = inject(SideNavService);
   ls = inject(LoadingService);
   eb = inject(SidePanelService);
 
@@ -30,10 +29,10 @@ export class DemoContainerComponent {
 
   isLoading = false;
 
-  sidenavMode = this.ms.getSideNavPosition();
-  sidenavVisible = this.ms.getSideNavVisible();
+  sidenavMode = this.nav.getSideNavPosition();
+  sidenavVisible = this.nav.getSideNavVisible();
   workbenchMargin = this.sidenavVisible.pipe(
-    map(visible => { return visible ? { 'margin-left': '5px' } : {} })
+    map((visible: boolean) => { return visible ? { 'margin-left': '5px' } : {} })
   );
 
   currentCMD = this.eb.getCommands()
@@ -48,17 +47,8 @@ export class DemoContainerComponent {
 
   selectedComponent = this.router.events
     .pipe(
-      takeUntil(this.destroy$),
-      filter((event) => event instanceof NavigationEnd),
-      map(() => this.rootRoute(this.route)),
-      filter((route: ActivatedRoute) => route.outlet === 'primary'),
-      map((route: ActivatedRoute) => {
-        return route.component != null
-          ? `Component: ${route.component.toString()
-            .substring(6, route.component.toString().indexOf('{') - 1)}`
-          : '';
-      }),
-    )
+      map((action: SidebarActions) => (action === SidebarActions.HIDE_MARKDOWN ? false : true))
+    );
 
   constructor() {
     effect(() => {

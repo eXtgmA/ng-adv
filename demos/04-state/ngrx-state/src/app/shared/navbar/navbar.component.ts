@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { MenuService } from '../menu/menu.service';
+import { SideNavFacade } from '../../state/sidenav.facade';
 import { SnackbarService } from '../snackbar/snackbar.service';
-import { MenuFacade } from 'src/app/state/menu.facade';
+import { NavbarService } from './navbar.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,12 +9,13 @@ import { MenuFacade } from 'src/app/state/menu.facade';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
-  ms = inject(MenuService);
+  nav = inject(SideNavFacade);
+  ms = inject(NavbarService);
   sns = inject(SnackbarService);
   menuItems = this.ms.getTopItems();
 
   toggleMenu() {
-    this.ms.toggleMenuVisibility();
+    this.nav.toggleMenuVisibility();
   }
 
   toggleApps() {

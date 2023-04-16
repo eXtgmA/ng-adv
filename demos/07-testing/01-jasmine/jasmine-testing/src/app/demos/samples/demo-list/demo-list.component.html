@@ -16,7 +16,6 @@
         *ngFor="let d of demos$ | async"
         [item]="d"
         (onDelete)="deleteItem($event)"
-        (onSlide)="changeVisibility($event)"
         (dblclick)="selectItem(d)"
         cdkDrag
         class="box"

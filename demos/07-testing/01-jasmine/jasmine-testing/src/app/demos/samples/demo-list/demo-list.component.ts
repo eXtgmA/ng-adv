@@ -5,7 +5,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { DemoItem } from '../../demo-base/demo-item.model';
 import { getAllDemos } from '../../state/demo.selectors';
 import { DemoState } from '../../state/demos.reducer';
-import { toggleVisiblity, setSelected } from '../../state/demos.actions';
+import { DemoActions } from '../../state/demos.actions';
 
 @Component({
   selector: 'app-demo-list',
@@ -13,11 +13,11 @@ import { toggleVisiblity, setSelected } from '../../state/demos.actions';
   styleUrls: ['./demo-list.component.scss'],
 })
 export class DemoListComponent implements OnInit {
-  constructor(private store: Store<DemoState>) {}
+  constructor(private store: Store<DemoState>) { }
 
   demos$: Observable<DemoItem[]> = this.store.select(getAllDemos);
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   drop(event: CdkDragDrop<DemoItem[]>) {
     this.demos$.subscribe((arr) => {
@@ -39,11 +39,7 @@ export class DemoListComponent implements OnInit {
     console.log('deleting item', item);
   }
 
-  changeVisibility(item: DemoItem) {
-    this.store.dispatch(toggleVisiblity({ item }));
-  }
-
   selectItem(item: DemoItem) {
-    this.store.dispatch(setSelected({ item }));
+    this.store.dispatch(DemoActions.setselected({ item }));
   }
 }

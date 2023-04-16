@@ -10,7 +10,6 @@ import { MaterialModule } from '../material.module';
 import { SharedModule } from '../shared/shared.module';
 import { UxModule } from '../ux/ux.module';
 import { DemoContainerComponent } from './demo-container/demo-container.component';
-import { MarkdownEditorComponent } from './markdown-editor/markdown-editor.component';
 import { GlobalErrorsComponent } from './samples/global-errors/global-errors.component';
 import { LocServiceComponent } from './samples/loc-service/loc-service.component';
 import { MembersComponent } from './samples/multi-guard/members/members.component';
@@ -93,18 +92,7 @@ const demoRoutes: Routes = [
       {
         path: 'router-animations',
         component: RouterAnimationsComponent,
-      },
-      {
-        path: 'auxilary',
-        component: AuxilaryRoutesComponent,
-        children: [
-          {
-            path: 'editor',
-            component: MarkdownEditorComponent,
-            outlet: 'actions',
-          },
-        ],
-      },
+      }
     ],
   },
 ];
@@ -112,7 +100,6 @@ const demoRoutes: Routes = [
 @NgModule({
   declarations: [
     DemoContainerComponent,
-    MarkdownEditorComponent,
     RoutingComponent,
     RoutingTargetComponent,
     LocServiceComponent,

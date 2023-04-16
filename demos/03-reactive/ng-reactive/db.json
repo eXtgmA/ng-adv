@@ -132,6 +132,16 @@
       "completed": false
     }
   ],
+  "top-links": [
+    {
+      "label": "Home",
+      "url": ""
+    },
+    {
+      "label": "Demos",
+      "url": "demos"
+    }
+  ],
   "topics": [
     {
       "id": 1,

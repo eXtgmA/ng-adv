@@ -13,9 +13,9 @@ export class SkillsDataService extends DefaultDataService<Skill> {
     super('Skill', http, httpUrlGenerator);
   }
 
-  override getAll(): Observable<Skill[]> {
-    return this.http.get(`${environment.apiUrl}skills`).pipe(
-      map((data) => {
+  override getAll() {
+    return this.http.get<Skill[]>(`${environment.apiUrl}skills`).pipe(
+      map((data: Skill[]) => {
         if (!data) {
           return [];
         }

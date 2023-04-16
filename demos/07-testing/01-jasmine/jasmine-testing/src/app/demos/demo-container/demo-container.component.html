@@ -1,46 +1,38 @@
 <mat-sidenav-container>
-  <mat-sidenav #sidenav [opened]="ms.visible$ | async" [mode]="sidenavMode">
+  <mat-sidenav #sidenav [opened]="sidenavVisible | async" [mode]="(sidenavMode | async) ?? 'side' ">
     <mat-toolbar color="accent">
       <mat-toolbar-row>
         {{ title }}
       </mat-toolbar-row>
     </mat-toolbar>
     <mat-nav-list>
-      <mat-toolbar class="menu">
+      <mat-toolbar class="sidenav-menu">
         <span>Please select:</span>
       </mat-toolbar>
-        <mat-list-item role="listitem" class="demoitem" *ngFor="let item of demos$ | async" [routerLink]="['./' + item.url]">{{ item.title }}</mat-list-item>
+        <mat-list-item role="listitem" *ngFor="let item of demos | async" [routerLink]="['./' + item.url]">{{ item.title }}</mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    
     <div
-      class="nav-content"
-      gdAreas="toolbar toolbar | loading loading  | workbench sidebar | editor sidebar"
-      gdGap="0px"
-      gdRows="65px 5px auto 200px"
-      gdColumns="auto 80px"
-      gdColumns.lt-md="100%"
-      [ngStyle]="getWorbenchStyle()"
-    >
-      <div gdArea="toolbar">
+    class="gdSidenavContent"
+    [ngStyle]="workbenchMargin | async"
+  >
+      <div class="gdToolbar">
         <mat-toolbar color="accent">
           <mat-toolbar-row>
             <h4>{{ header }}</h4>
           </mat-toolbar-row>
         </mat-toolbar>
       </div>
-      <div gdArea="loading">
+      <div class="gdLoading">
         <app-loading *ngIf="isLoading"></app-loading>
-      </div>      
-      <div gdArea="workbench">
-        <router-outlet></router-outlet>            
       </div>
-      <div gdArea="sidebar" class="sidebar">
-        <app-side-panel></app-side-panel>
-      </div>
-      <div gdArea="editor" *ngIf="showEditor$ | async" fxFlexAlign="end">
+      <div class="gdWorkbench"><router-outlet></router-outlet></div>
+      <div class="gdEditor" *ngIf="showMdEditor | async">
         <app-editor-container></app-editor-container>
+      </div>
+      <div class="gdSidebar">
+        <app-side-panel></app-side-panel>
       </div>
     </div>
   </mat-sidenav-content>

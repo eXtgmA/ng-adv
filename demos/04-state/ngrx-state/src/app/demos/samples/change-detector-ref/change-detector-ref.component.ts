@@ -2,8 +2,7 @@ import {
   AfterViewInit,
   ChangeDetectorRef,
   Component,
-  OnInit,
-  ViewChild,
+  ViewChild
 } from '@angular/core';
 import { DetectorChildComponent } from './detector-child/detector-child.component';
 
@@ -18,7 +17,7 @@ export class ChangeDetectorRefComponent implements AfterViewInit {
   produceErr = true;
   handleErr = true;
 
-  constructor(private cd: ChangeDetectorRef) {}
+  constructor(private cd: ChangeDetectorRef) { }
 
   ngAfterViewInit(): void {
     let childVal = this.child?.childData;
@@ -28,5 +27,5 @@ export class ChangeDetectorRefComponent implements AfterViewInit {
     console.log('childVal', childVal);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
 import { ThemeService } from './shared/theme/theme.service';
-import { environment } from '../environments/environment.prod';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,7 @@ import { environment } from '../environments/environment.prod';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(private titleService: Title, private ts: ThemeService) { }
+  constructor(private titleService: Title, private ts: ThemeService) {}
 
   title: string = environment.title;
   selectedTheme: string = 'default';

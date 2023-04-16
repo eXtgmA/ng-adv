@@ -6,7 +6,7 @@ import { DemoItem } from '../../demo-base/demo-item.model';
   templateUrl: './demo-row.component.html',
   styleUrls: ['./demo-row.component.scss'],
 })
-export class DemoRowComponent implements OnInit {
+export class DemoRowComponent {
   @Input() item: DemoItem | null = null;
   @Output() onDelete: EventEmitter<DemoItem> = new EventEmitter();
   @Output() onSlide: EventEmitter<DemoItem> = new EventEmitter();

@@ -1,10 +1,10 @@
 export class DemoItem {
-  id: number;
-  url: string;
-  title: string;
+  id: number = 0;
+  url: string = '';
+  title: string = '';
+  visible: boolean = true;
+  topicid: number = 0;
+  sortOrder: number = 0;
+  component: string = '';
   markdown?: string;
-  visible: boolean;
-  topicid: number;
-  sortOrder: number;
-  component: string;
 }

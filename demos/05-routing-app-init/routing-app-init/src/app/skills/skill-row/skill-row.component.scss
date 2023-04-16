@@ -1,4 +1,21 @@
-.skillrow {
+.row {
   padding: 0.5rem 0;
-  border-bottom: 1px solid #8d6e63;
+  border-bottom: 1px solid #1a76d2;
+}
+
+
+.mat-mdc-outlined-button{
+  height: 30px;    
+}
+
+.mat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+// this is the parent span angular inserts for icon inside mat-fab
+/* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version.*/
+::ng-deep.mat-mdc-fab .mat-button-wrapper {
+  display: flex !important;
+  justify-content: center !important;
 }

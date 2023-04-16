@@ -1,9 +1,6 @@
 <mat-toolbar color="accent">
   <mat-toolbar-row fxLayoutAlign="space-between center">
     <div>SPA Skills</div>
-    <div id="todo">
-      todo: {{ (skills | async)?.length }}
-    </div>
     <div fxLayoutGap="10px">
       <button mat-raised-button (click)="addItem()" color="primary">Add</button>
       <mat-slide-toggle [formControl]="fcToggle" color="primary"
@@ -20,3 +17,5 @@
     (itemCompleted)="toggleItemComplete($event)"
   ></app-skill-row>
 </div>
+
+<app-skills-kpi></app-skills-kpi>

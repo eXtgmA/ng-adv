@@ -6,7 +6,7 @@
       "component": "AppStateComponent",
       "id": 3,
       "topicid": 1,
-      "visible": true,
+      "visible": false,
       "sortOrder": 3
     },
     {
@@ -15,7 +15,7 @@
       "component": "SelectorsComponent",
       "id": 9,
       "topicid": 1,
-      "visible": true,
+      "visible": false,
       "sortOrder": 3
     },
     {
@@ -37,7 +37,7 @@
       "sortOrder": 3
     },
     {
-      "url": "demos-list",
+      "url": "feature-modules-state",
       "title": "Feature Module State",
       "component": "DemoListHostComponent",
       "id": 5,
@@ -46,7 +46,7 @@
       "sortOrder": 4
     },
     {
-      "url": "demos-state",
+      "url": "ngrx-entity",
       "title": "@ngrx/entity",
       "component": "DemosStateComponent",
       "id": 4,
@@ -65,7 +65,7 @@
     },
     {
       "url": "presenter-ngrx",
-      "title": "Presenter NgRx",
+      "title": "Container Presenter NgRx",
       "component": "ContainerPresenterNgrxComponent",
       "id": 13,
       "topicid": 1,

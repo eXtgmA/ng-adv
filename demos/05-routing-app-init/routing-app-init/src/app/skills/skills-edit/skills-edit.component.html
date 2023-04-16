@@ -10,18 +10,13 @@
     <mat-form-field>
       <input matInput type="text" placeholder="Name" [(ngModel)]="skill.name" />
     </mat-form-field>
-    <mat-form-field>
-      <input
-        matInput
-        type="number"
-        placeholder="Price"
-        [(ngModel)]="skill.hours"
-      />
-    </mat-form-field>
+
     <mat-slide-toggle ngModel name="skill.completed">Complete</mat-slide-toggle>
   </mat-card-content>
   <mat-card-actions align="end">
-    <button mat-button (click)="doCancel()">Cancel</button>
-    <button mat-button (click)="saveSkill()">Save</button>
+    <button mat-raised-button (click)="doCancel()" color="accent">
+      Cancel
+    </button>
+    <button mat-raised-button (click)="saveSkill()" color="accent">Save</button>
   </mat-card-actions>
 </mat-card>

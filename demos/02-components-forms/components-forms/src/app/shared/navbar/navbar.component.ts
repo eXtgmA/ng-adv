@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { MenuService } from '../menu/menu.service';
 import { SnackbarService } from '../snackbar/snackbar.service';
+import { SideNavService } from '../sidenav/sidenav.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +8,7 @@ import { SnackbarService } from '../snackbar/snackbar.service';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
-  ms = inject(MenuService);
+  ms = inject(SideNavService);
   sns = inject(SnackbarService);
   menuItems = this.ms.getTopItems();
 

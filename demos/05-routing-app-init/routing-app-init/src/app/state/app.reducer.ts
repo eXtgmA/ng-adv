@@ -1,13 +1,16 @@
+import { MatDrawerMode } from '@angular/material/sidenav';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
 import { Customer } from '../app-init/customer.model';
-import { loadCustomersSuccess } from './customers.actions';
 import { User } from '../user/user.model';
-import { toggleLoggedIn, togglePrimeMember } from './app.actions';
+import { changeSideNavPosition, changeSideNavVisible, toggleLoggedIn, togglePrimeMember, toggleSideNav } from './app.actions';
+import { loadCustomersSuccess } from './customers.actions';
 
 export const appFeatureKey = 'app';
 
 export interface AppState extends EntityState<Customer> {
+  sideNavVisible: boolean;
+  sideNavPosition: MatDrawerMode;
   title: string;
   user: User;
 }
@@ -18,6 +21,8 @@ export const customerAdapter: EntityAdapter<Customer> =
 export const initialAppState: AppState = customerAdapter.getInitialState({
   title: 'Advanced Angular Development',
   user: { name: 'Giro the Galgo', isLoggedIn: false, isPrimeMember: false },
+  sideNavVisible: true,
+  sideNavPosition: 'side',
 });
 
 export const appReducer = createReducer(
@@ -36,5 +41,17 @@ export const appReducer = createReducer(
       ...state,
       user: { ...state.user, isPrimeMember: !state.user.isPrimeMember },
     };
-  })
+  }),
+  on(toggleSideNav, (state) => ({
+    ...state,
+    sideNavVisible: !state.sideNavVisible,
+  })),
+  on(changeSideNavVisible, (state, action) => ({
+    ...state,
+    sideNavVisible: action.visible,
+  })),
+  on(changeSideNavPosition, (state, action) => ({
+    ...state,
+    sideNavPosition: action.position as MatDrawerMode,
+  })),
 );

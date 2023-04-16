@@ -2,13 +2,12 @@ import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { filter, map, takeUntil } from 'rxjs/operators';
-import { MenuService } from 'src/app/shared/menu/menu.service';
+import { SideNavService } from 'src/app/shared/sidenav/sidenav.service';
+import { SidebarActions } from 'src/app/shared/side-panel/sidebar.actions';
+import { SidePanelService } from 'src/app/shared/side-panel/sidepanel.service';
 import { environment } from 'src/environments/environment';
 import { LoadingService } from '../../shared/loading/loading.service';
-import { DemoService } from '../demo-base/demo.service';
-import { SidePanelService } from 'src/app/shared/side-panel/sidepanel.service';
-import { SidebarActions } from 'src/app/shared/side-panel/sidebar.actions';
-import { MenuFacade } from 'src/app/state/menu.facade';
+import { DemoFacade } from '../state/demo.facade';
 
 @Component({
   selector: 'app-demo-container',
@@ -16,18 +15,17 @@ import { MenuFacade } from 'src/app/state/menu.facade';
   styleUrls: ['./demo-container.component.scss'],
 })
 export class DemoContainerComponent implements OnInit {
-
   router = inject(Router);
   route = inject(ActivatedRoute);
-  ds = inject(DemoService);
-  ms = inject(MenuService);
+  df = inject(DemoFacade);
+  ms = inject(SideNavService);
   ls = inject(LoadingService);
   eb = inject(SidePanelService);
 
   destroy$ = new Subject();
   title: string = environment.title;
   header = 'Please select a demo';
-  demos = this.ds.getItems();
+  demos = this.df.getDemos();
 
   isLoading = false;
 
@@ -49,8 +47,8 @@ export class DemoContainerComponent implements OnInit {
     });
   }
 
-
   ngOnInit() {
+    this.df.init();
     this.setComponentMetadata();
   }
 

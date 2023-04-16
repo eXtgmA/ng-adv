@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDrawerMode } from '@angular/material/sidenav';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { filter, map } from 'rxjs/operators';
-import { MenuService } from 'src/app/shared/menu/menu.service';
+import { Subject } from 'rxjs';
+import { filter, map, takeUntil } from 'rxjs/operators';
+import { SideNavService } from 'src/app/shared/sidenav/sidenav.service';
+import { SidebarActions } from 'src/app/shared/side-panel/sidebar.actions';
+import { SidePanelService } from 'src/app/shared/side-panel/sidepanel.service';
 import { environment } from 'src/environments/environment';
 import { LoadingService } from '../../shared/loading/loading.service';
-import { DemoService } from '../demo-base/demo.service';
-import { getAllDemos } from '../state/demo.selectors';
-import { loadDemos } from '../state/demos.actions';
-import { DemoState } from '../state/demos.reducer';
+import { DemoFacade } from '../state/demo.facade';
 
 @Component({
   selector: 'app-demo-container',
@@ -17,56 +15,46 @@ import { DemoState } from '../state/demos.reducer';
   styleUrls: ['./demo-container.component.scss'],
 })
 export class DemoContainerComponent implements OnInit {
+  router = inject(Router);
+  route = inject(ActivatedRoute);
+  df = inject(DemoFacade);
+  ms = inject(SideNavService);
+  ls = inject(LoadingService);
+  eb = inject(SidePanelService);
+
+  destroy$ = new Subject();
   title: string = environment.title;
   header = 'Please select a demo';
-  demos$ = this.store.select(getAllDemos);
-  sidenavMode: MatDrawerMode = 'side';
-  isLoading = true;
+  demos = this.df.getDemos();
 
-  constructor(
-    private router: Router,
-    private demoService: DemoService,
-    private route: ActivatedRoute,
-    public ms: MenuService,
-    public ls: LoadingService,
-    private store: Store<DemoState>
-  ) {}
+  isLoading = false;
 
-  ngOnInit() {
-    this.setMenu();
-    this.setMetadata();
-    this.setMenuPosition();
-    this.getWorbenchStyle();
-    this.subscribeLoading();
-    this.store.dispatch(loadDemos());
-  }
+  sidenavMode = this.ms.getSideNavPosition();
+  sidenavVisible = this.ms.getSideNavVisible();
+  workbenchMargin = this.sidenavVisible.pipe(
+    map(visible => { return visible ? { 'margin-left': '5px' } : {} })
+  );
 
-  subscribeLoading() {
-    this.ls.getLoading().subscribe((value) => {
+  showMdEditor = this.eb
+    .getCommands()
+    .pipe(
+      map((action) => (action === SidebarActions.HIDE_MARKDOWN ? false : true))
+    );
+
+  constructor() {
+    this.ls.getLoading().pipe(takeUntil(this.destroy$)).subscribe((value) => {
       Promise.resolve(null).then(() => (this.isLoading = value));
     });
   }
 
-  setMenuPosition() {
-    this.ms.position$.subscribe(
-      (mode: any) => (this.sidenavMode = mode as MatDrawerMode)
-    );
+  ngOnInit() {
+    this.df.init();
+    this.setComponentMetadata();
   }
 
-  setMenu() {
-    this.demos$ = this.store.select(getAllDemos);
-  }
-
-  getWorbenchStyle() {
-    let result = {};
-    this.ms.visible$.subscribe((visible: any) => {
-      result = visible
-        ? {
-            'margin-left': '5px',
-          }
-        : {};
-    });
-    return result;
+  ngOnDestroy() {
+    this.destroy$.next(true);
+    this.destroy$.complete();
   }
 
   rootRoute(route: ActivatedRoute): ActivatedRoute {
@@ -76,9 +64,10 @@ export class DemoContainerComponent implements OnInit {
     return route;
   }
 
-  setMetadata() {
+  setComponentMetadata() {
     this.router.events
       .pipe(
+        takeUntil(this.destroy$),
         filter((event) => event instanceof NavigationEnd),
         map(() => this.rootRoute(this.route)),
         filter((route: ActivatedRoute) => route.outlet === 'primary')
@@ -87,8 +76,8 @@ export class DemoContainerComponent implements OnInit {
         this.header =
           route.component != null
             ? `Component: ${route.component
-                .toString()
-                .substring(6, route.component.toString().indexOf('{') - 1)}`
+              .toString()
+              .substring(6, route.component.toString().indexOf('{') - 1)}`
             : '';
       });
   }

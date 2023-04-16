@@ -8,7 +8,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { Skill } from '../skill.model';
-import { environment } from '../../../environments/environment';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-skill-row',
@@ -21,9 +21,9 @@ export class SkillRowComponent implements OnInit {
   @Output() itemDeleted: EventEmitter<Skill> = new EventEmitter();
   @Output() itemCompleted: EventEmitter<Skill> = new EventEmitter();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   ngDoCheck(): void {
     if (environment.logChangeDetection) {

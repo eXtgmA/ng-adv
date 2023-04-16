@@ -7,19 +7,19 @@ export const editorFeatureKey = 'mdeditor';
 
 export interface EditorState {
   comments: CommentItem[];
-  hasLoaded: boolean;
+  loaded: boolean;
 }
 
 export const initialEditorState: EditorState = {
   comments: [],
-  hasLoaded: false,
+  loaded: false,
 };
 
 // Reducer
 export const editorReducer = createReducer(
   initialEditorState,
   on(MarkdownEditorActions.loadcommentssuccess, (state, action) => {
-    return { ...state, comments: action.items, hasLoaded: true };
+    return { ...state, comments: action.items, loaded: true };
   }),
   on(MarkdownEditorActions.savecommentssuccess, (state, action) => {
     //Notice to clone an Array we use [] instead of {}

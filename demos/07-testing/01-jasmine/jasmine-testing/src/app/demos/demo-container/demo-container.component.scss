@@ -1,41 +1,13 @@
 @import "mixins.scss";
 
-button {
-  width: 100%;
-  @include link(var(--color-fg), var(--font-small));
-}
-
-.sidebar{
-  margin-left: 5px;
-}
-
 mat-toolbar {
   height: var(--toolbar-medium);
   margin-bottom: var(--gap-small);
 }
 
-.menu {
-  font-size: 1rem;
-}
-
-.mat-nav-list .mat-mdc-list-item:hover, .mat-nav-list .mat-list-item:focus {
-  background: var(--color-bg)
-}
-
-.mat-mdc-list-base .mat-mdc-list-item, .mat-list-base .mat-list-option {
-  height: 36px;
-}
-
-/* TODO(mdc-migration): The following rule targets internal classes of list that may no longer apply for the MDC version. */
-mat-list-item{
-  border-bottom: 1px solid var(--color-bg);
-  border-top: 1px solid var(--color-bg);
-}
-
-.nav-content {
-  min-width: 400px;
-  height:100%;
-  overflow: hidden;
+.mat-drawer-container {
+  background-color: var(--color-clear);
+  color: var(--color-darkfont);
 }
 
 .mat-sidenav-container {
@@ -43,11 +15,75 @@ mat-list-item{
 }
 
 .mat-sidenav {
-  width: 220px;
+  width: 230px;
   background-color: var(--color-fg);
 }
 
-.mat-drawer-container {
-  background-color: var(--color-clear);
-  color: var(--color-darkfont);
+.sidenav-menu {
+  font-size: 1rem;
+}
+
+.gdSidenavContent {
+  min-width: 400px;
+  height: 100%;
+  overflow: hidden;
+  display: grid;
+  gap: 5px;
+  grid-template-rows: 65px 5px auto;
+  grid-template-columns: auto 80px;
+  grid-template-areas:
+    "toolbar toolbar"
+    "loading loading"
+    "workbench sidebar"
+    "mdeditor sidebar";
+
+    @media only screen and (max-width: 960px) {
+    grid-template-columns: auto;
+    grid-template-areas:
+      "toolbar"
+      "loading"
+      "workbench"
+      "mdeditor";
+  }
+}
+
+.gdToolbar {
+  grid-area: toolbar;
+}
+
+.gdSidebar {
+  grid-area: sidebar;
+
+  @media only screen and (max-width: 960px) {
+    display: none;
+  }
+}
+
+.gdLoading {
+  grid-area: loading;
+}
+
+.gdWorkbench {
+  grid-area: workbench;
+}
+
+.gdEditor {
+  grid-area: mdeditor;
+  align-self: flex-end;
+}
+
+// list
+.mat-nav-list .mat-mdc-list-item:hover,
+.mat-nav-list .mat-list-item:focus {
+  background: var(--color-bg);
+}
+
+.mat-mdc-list-base .mat-mdc-list-item,
+.mat-list-base .mat-list-option {
+  height: 36px;
+}
+
+mat-list-item {
+  border-bottom: 1px solid var(--color-bg);
+  border-top: 1px solid var(--color-bg);
 }

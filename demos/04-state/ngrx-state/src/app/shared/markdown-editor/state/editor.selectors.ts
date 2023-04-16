@@ -11,5 +11,5 @@ export const getComments = createSelector(
 
 export const hasLoaded = createSelector(
   getEditorState,
-  (state: EditorState) => state.hasLoaded
+  (state: EditorState) => state.loaded
 );

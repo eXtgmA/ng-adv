@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { MenuService } from "src/app/shared/menu/menu.service";
+import { SideNavService } from "src/app/shared/sidenav/sidenav.service";
 
 @Component({
   selector: "app-admin-container",
@@ -7,22 +7,22 @@ import { MenuService } from "src/app/shared/menu/menu.service";
   styleUrls: ["./admin-container.component.scss"]
 })
 export class AdminContainerComponent implements OnInit {
-  constructor(public ms: MenuService) {}
+  constructor(public ms: SideNavService) { }
 
   links: { title: string; url: string }[] = [
     { title: "Topics", url: "topics" },
     { title: "Skills", url: "skills" }
   ];
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   getWorbenchStyle() {
     let result = {};
     this.ms.visible$.subscribe(visible => {
       result = visible
         ? {
-            "margin-left": "10px"
-          }
+          "margin-left": "10px"
+        }
         : {};
     });
     return result;

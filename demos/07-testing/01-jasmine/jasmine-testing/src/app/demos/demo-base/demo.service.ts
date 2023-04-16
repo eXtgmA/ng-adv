@@ -6,14 +6,14 @@ import { DemoItem } from './demo-item.model';
 
 @Injectable({ providedIn: 'root' })
 export class DemoService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
   getItems(): Observable<DemoItem[]> {
-    return this.httpClient.get<DemoItem[]>(environment.demosApi);
+    return this.httpClient.get<DemoItem[]>(`${environment.apiUrl}demos`);
   }
 
   addItem(item: DemoItem): Observable<DemoItem> {
-    return this.httpClient.post<DemoItem>(environment.demosApi, item);
+    return this.httpClient.post<DemoItem>(`${environment.apiUrl}demos`, item);
   }
 
   updateItem(item: DemoItem): Observable<DemoItem> {

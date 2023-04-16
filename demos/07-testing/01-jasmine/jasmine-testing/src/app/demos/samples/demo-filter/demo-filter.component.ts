@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { debounceTime } from 'rxjs/operators';
 import { DemoState } from '../../state/demos.reducer';
-import { applyFilter } from '../../state/demos.actions';
+import { DemoActions } from '../../state/demos.actions';
 
 @Component({
   selector: 'app-demo-filter',
@@ -11,7 +11,7 @@ import { applyFilter } from '../../state/demos.actions';
   styleUrls: ['./demo-filter.component.scss'],
 })
 export class DemoFilterComponent implements OnInit {
-  constructor(private store: Store<DemoState>) {}
+  constructor(private store: Store<DemoState>) { }
 
   fcFilter = new FormControl();
 
@@ -21,7 +21,7 @@ export class DemoFilterComponent implements OnInit {
 
   handleFilterChange() {
     this.fcFilter.valueChanges.pipe(debounceTime(350)).subscribe((filter) => {
-      this.store.dispatch(applyFilter(filter));
+      this.store.dispatch(DemoActions.applyfilter(filter));
     });
   }
 }

@@ -9,13 +9,13 @@ import { SnackbarService } from '../../shared/snackbar/snackbar.service';
   styleUrls: ['./skills-edit.component.scss'],
 })
 export class SkillsEditComponent implements OnInit {
-  skill: Skill | undefined = { id: 0, name: '', hours: 1, completed: false };
+  skill: Skill | undefined = { id: 0, name: '', completed: false };
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private sns: SnackbarService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getSkill();

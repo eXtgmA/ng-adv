@@ -17,3 +17,13 @@ export const getUser = createSelector(
   getAppState,
   (state: AppState) => state.user
 );
+
+export const getSideNavVisible = createSelector(
+  getAppState,
+  (state: AppState) => state.sideNavVisible
+);
+
+export const getSideNavPosition = createSelector(
+  getAppState,
+  (state: AppState) => state.sideNavPosition
+);
