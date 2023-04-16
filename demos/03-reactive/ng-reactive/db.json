@@ -49,11 +49,6 @@
       "visible": true
     },
     {
-      "url": "signal-basics",
-      "title": "Signal Basics",
-      "component": "SignalsBasicsComponent"
-    },
-    {
       "url": "imperative",
       "topicid": 3,
       "title": "Imperative Reactivity",
@@ -89,6 +84,12 @@
       "visible": true,
       "sortOrder": 3
     },
+    {
+      "url": "signal-basics",
+      "title": "Signal Basics",
+      "component": "SignalsBasicsComponent"
+    },
+
     {
       "url": "marble-testing",
       "title": "Marble Testing",
