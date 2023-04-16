@@ -1,5 +1,5 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
-import { Observable, from, fromEvent, interval, of } from 'rxjs';
+import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
+import { Observable, from, interval, of } from 'rxjs';
 import {
   delay,
   filter,
@@ -8,14 +8,12 @@ import {
   mergeMap,
   pluck,
   reduce,
-  switchMap,
   take,
   tap
 } from 'rxjs/operators';
 import { Voucher } from '../../vouchers/voucher.model';
 import { VouchersService } from '../../vouchers/voucher.service';
 import { Person } from './person';
-import { TaskService } from '../../tasks/task.service';
 
 @Component({
   selector: 'app-operators',
@@ -25,7 +23,6 @@ import { TaskService } from '../../tasks/task.service';
 export class OperatorsComponent implements OnInit {
   @ViewChild('btnSwitchMap', { static: true }) btnSwitchMap: ElementRef;
   vs = inject(VouchersService);
-  ts = inject(TaskService);
   response: any;
 
   // Declarative Pattern
@@ -147,10 +144,5 @@ export class OperatorsComponent implements OnInit {
     person.pipe(pluck('children')).subscribe(ch => console.log("children - pluck", ch));
     //use map
     person.pipe(map((h: Person) => h.children)).subscribe(ch => console.log("children - map", ch));
-  }
-
-  useShareReplay() {
-    //take a look at the getTasks() method in task.service.ts the network tab and of browser dev tools
-    this.ts.getTasks().subscribe((data) => console.log(data));
   }
 }
