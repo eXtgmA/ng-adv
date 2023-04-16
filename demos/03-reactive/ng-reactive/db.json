@@ -56,14 +56,14 @@
     {
       "url": "imperative",
       "topicid": 3,
-      "title": "Imperative Programming",
+      "title": "Imperative Reactivity",
       "component": "ImperativeComponent",
       "visible": true
     },
     {
       "url": "reactive",
       "topicid": 3,
-      "title": "Reactive Programming",
+      "title": "Declarative Reactivity",
       "component": "ImperativeComponent",
       "visible": true
     },

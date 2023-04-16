@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
 import { Skill } from '../../skills/skills';
@@ -14,15 +14,13 @@ export class ImperativeComponent implements OnInit {
   @Input() showMD = true;
 
   filter$ = new FormControl('', { nonNullable: true });
-
+  service = inject(SkillsService);
   //local vars for values taken out of the stream
   skills: Skill[] = [];
   view: Skill[] = [];
 
   //destroy$ is a Subject that will emit a value when the component is destroyed. Implemented in ngOnDestroy()
   private destroy$ = new Subject();
-
-  constructor(private service: SkillsService) { }
 
   ngOnInit(): void {
     this.service
@@ -43,6 +41,4 @@ export class ImperativeComponent implements OnInit {
             : this.skills.filter((skill) => skill.name.includes(val));
       });
   }
-
-
 }
