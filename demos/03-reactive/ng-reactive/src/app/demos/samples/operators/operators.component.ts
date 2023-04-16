@@ -77,15 +77,6 @@ export class OperatorsComponent implements OnInit {
       .subscribe((val) => console.log('logging', val));
   }
 
-  useMapAndTap() {
-    this.vouchers$
-      .pipe(
-        tap((data) => console.log('logged using tap() operator: ', data)),
-        map((vs) => vs.map(this.setLabel))
-      )
-      .subscribe((data) => this.log('use pipe(), map() & tap()', data));
-  }
-
   // JavaScript Array.find - not an observable operator
   useFindArr() {
     this.vouchers$
@@ -156,15 +147,7 @@ export class OperatorsComponent implements OnInit {
     item.pipe(map((h) => h.children)).subscribe(console.log);
   }
 
-  useAjax() {
-    const repos$ = ajax(`https://api.github.com/users/arambazamba/repos`).pipe(
-      map((resp) => console.log('repos: ', resp)),
-      catchError((error) => {
-        console.log('error: ', error);
-        return of(error);
-      })
-    );
+  useSwitchMap() {
 
-    repos$.subscribe();
   }
 }

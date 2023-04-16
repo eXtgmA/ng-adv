@@ -19,14 +19,27 @@
       "component": "DebouncedSearchComponent"
     },
     {
+      "url": "actionstreams",
+      "title": "Action Streams",
+      "component": "ActionStreamsComponent"
+    },
+    {
       "url": "mousedomobs",
       "title": "Mouse & DOM Events",
       "component": "MouseDomObservablesComponent"
     },
     {
-      "url": "actionstreams",
-      "title": "Action Streams",
-      "component": "ActionStreamsComponent"
+      "url": "creating",
+      "topicid": 2,
+      "title": "Creating Observables",
+      "component": "CreatingObservableComponent",
+      "visible": true,
+      "sortOrder": 2
+    },
+    {
+      "url": "operators",
+      "title": "Base Operators",
+      "component": "OperatorsComponent"
     },
     {
       "url": "unsubscribe",
@@ -54,14 +67,7 @@
       "component": "ImperativeComponent",
       "visible": true
     },
-    {
-      "url": "creating",
-      "topicid": 2,
-      "title": "Creating Observables",
-      "component": "CreatingObservableComponent",
-      "visible": true,
-      "sortOrder": 2
-    },
+
     {
       "url": "subjects",
       "topicid": 2,
@@ -75,11 +81,7 @@
       "title": "Marble Testing",
       "component": "MarbleTestingComponent"
     },
-    {
-      "url": "operators",
-      "title": "Base Operators",
-      "component": "OperatorsComponent"
-    },
+
     {
       "url": "caching",
       "title": "Caching",

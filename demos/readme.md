@@ -28,21 +28,23 @@
 - Typed Forms Validation & Custom Validators
 - Handling FormErrors & ErrorStateMatcher
 
-## Mastering Reactive Programming
+## Mastering Reactive Programming using Signals & RxJs
 
-- Recap: Observables, Operators & Subjects
+- Imperative vs Functional Programming
+- Immutability & Pure Functions
+- Introduction to RxJs
+- Imperative vs Declarative Reactive Programming
+- Observables, Observers & Use Cases
 - Data- vs Action-Streams
 - Mouse & DOM Events as Observables
-- Unsubscribing: When & Patterns
+- Unsubscribing (takeUntil, DestroyRef, takeUntilDestroyed)
 - Introduction to Signals
-- Signals vs Observables: When to use which
-- Imperative vs Reified Reactive Programming
+- Signals vs Observables: Syncronous & Asynchronous Reactive Programming
 - Understanding Marble Diagrams & Debugging Observables
-- Base Operators: Mapping, Filtering, Merging, Scanning, ...
 - Implementing Side Effects using tap
 - Marble-testing RxJs
-- Data Composition - Joining Observable Streams
-- Data Caching & Invalidation
+- Base Operators: Mapping, Filtering, Merging, Scanning, ...
+- Combination & Transformation Operators
 - Retry & Error Handling Strategies
 - Implementing & Testing Custom Observable Operators
 

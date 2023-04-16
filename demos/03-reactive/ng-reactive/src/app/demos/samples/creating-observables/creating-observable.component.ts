@@ -113,13 +113,4 @@ export class CreatingObservableComponent implements OnInit {
       (data) => console.log('data from axios', data)
     );
   }
-
-  useOperator() {
-    from([2, 5, 9, 12, 22]) // 5 marbles
-      .pipe(
-        filter((n) => n > 6),
-        map((n) => n * 2)
-      )
-      .subscribe((data: number) => console.log('useOperator: ', data));
-  }
 }

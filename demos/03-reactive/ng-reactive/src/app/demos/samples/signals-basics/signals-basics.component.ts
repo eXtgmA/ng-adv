@@ -1,7 +1,4 @@
 import { Component, computed, effect, signal } from '@angular/core';
-import { of } from 'rxjs';
-import { from, Observable } from 'rxjs';
-
 
 @Component({
   selector: 'app-signals-basics',

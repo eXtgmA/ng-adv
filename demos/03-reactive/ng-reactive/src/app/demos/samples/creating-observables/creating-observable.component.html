@@ -1,10 +1,11 @@
 <app-markdown-renderer [md]="'creating'"></app-markdown-renderer>
 <mat-card appearance="outlined">
   <mat-card-header>
-    <mat-card-title> Observable Basics - Creating & Consuming</mat-card-title>
+    <mat-card-title>Creating & Subscribing Observable</mat-card-title>
   </mat-card-header>
 
-  <mat-card-content fxLayout="column" fxLayoutGap="10px">
+  <mat-card-content  fxLayout="row wrap"
+  fxLayoutAlign="center start">
     <button mat-raised-button color="accent" (click)="useOf()">of()</button>
     <button mat-raised-button color="accent" (click)="useObsFrom()">
       from()
@@ -18,9 +19,6 @@
     </button>
     <button mat-raised-button color="accent" (click)="usePromiseToObs()">
       Casting Promises
-    </button>
-    <button mat-raised-button color="accent" (click)="useOperator()">
-      filter() - A simple Operator
     </button>
   </mat-card-content>
 </mat-card>
