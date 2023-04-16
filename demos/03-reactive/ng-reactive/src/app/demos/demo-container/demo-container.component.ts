@@ -8,6 +8,7 @@ import { DemoService } from '../demo-base/demo.service';
 import { SidePanelService } from 'src/app/shared/side-panel/sidepanel.service';
 import { SidebarActions } from 'src/app/shared/side-panel/sidebar.actions';
 import { SideNavService } from '../../shared/sidenav/sidenav.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-demo-container',
@@ -26,6 +27,7 @@ export class DemoContainerComponent {
   destroy$ = new Subject();
   title: string = environment.title;
   demos = this.ds.getItems();
+  selectedComponent = 'Please select a demo';
 
   isLoading = false;
 
@@ -45,11 +47,6 @@ export class DemoContainerComponent {
   //   map((action) => (action === SidebarActions.HIDE_MARKDOWN ? false : true))
   // );
 
-  selectedComponent = this.router.events
-    .pipe(
-      map((action: SidebarActions) => (action === SidebarActions.HIDE_MARKDOWN ? false : true))
-    );
-
   constructor() {
     effect(() => {
       this.showMdEditor = this.currentCMD() === SidebarActions.HIDE_MARKDOWN ? false : true;
@@ -60,10 +57,33 @@ export class DemoContainerComponent {
     });
   }
 
+  ngOnInit() {
+    this.setComponentMetadata();
+  }
+
   rootRoute(route: ActivatedRoute): ActivatedRoute {
     while (route.firstChild) {
       route = route.firstChild;
     }
     return route;
   }
+
+  setComponentMetadata() {
+    this.router.events
+      .pipe(
+        takeUntil(this.destroy$),
+        filter((event) => event instanceof NavigationEnd),
+        map(() => this.rootRoute(this.route)),
+        filter((route: ActivatedRoute) => route.outlet === 'primary')
+      )
+      .subscribe((route: ActivatedRoute) => {
+        this.selectedComponent =
+          route.component != null
+            ? `Component: ${route.component
+              .toString()
+              .substring(6, route.component.toString().indexOf('{') - 1)}`
+            : '';
+      });
+  }
+
 }
