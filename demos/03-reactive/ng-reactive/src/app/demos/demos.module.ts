@@ -7,7 +7,6 @@ import { MarkdownModule } from 'ngx-markdown';
 import { MaterialModule } from '../material.module';
 import { ActionStreamsComponent } from './samples/action-streams/action-streams.component';
 import { AsyncPipeComponent } from './samples/async-pipe/async-pipe.component';
-import { CachingComponent } from './samples/caching/caching.component';
 import { CombiningComponent } from './samples/combining/combining.component';
 import { CreatingObservableComponent } from './samples/creating-observables/creating-observable.component';
 import { CustomOperatorsComponent } from './samples/custom-operators/custom-operators.component';
@@ -60,7 +59,6 @@ const demoRoutes: Routes = [
       { path: 'errhandling', component: ErrHandlingComponent },
       { path: 'combining', component: CombiningComponent },
       { path: 'transformation', component: TransformationComponent },
-      { path: 'caching', component: CachingComponent },
       { path: 'actionstreams', component: ActionStreamsComponent },
       { path: 'marble-testing', component: MarbleTestingComponent },
       { path: 'statefull', component: StatefullComponent },
@@ -83,7 +81,6 @@ const demoRoutes: Routes = [
     AsyncPipeComponent,
     ErrHandlingComponent,
     CombiningComponent,
-    CachingComponent,
     ActionStreamsComponent,
     LangFeaturesComponent,
     TransformationComponent,

@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { from, interval, Observable, of } from 'rxjs';
-import { ajax } from 'rxjs/ajax';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
+import { Observable, from, fromEvent, interval, of } from 'rxjs';
 import {
-  catchError,
   delay,
   filter,
   find,
@@ -10,11 +8,14 @@ import {
   mergeMap,
   pluck,
   reduce,
+  switchMap,
   take,
-  tap,
+  tap
 } from 'rxjs/operators';
 import { Voucher } from '../../vouchers/voucher.model';
 import { VouchersService } from '../../vouchers/voucher.service';
+import { Person } from './person';
+import { TaskService } from '../../tasks/task.service';
 
 @Component({
   selector: 'app-operators',
@@ -22,22 +23,23 @@ import { VouchersService } from '../../vouchers/voucher.service';
   styleUrls: ['./operators.component.scss'],
 })
 export class OperatorsComponent implements OnInit {
-  constructor(private vs: VouchersService) { }
-
+  @ViewChild('btnSwitchMap', { static: true }) btnSwitchMap: ElementRef;
+  vs = inject(VouchersService);
+  ts = inject(TaskService);
   response: any;
 
   // Declarative Pattern
-  vouchers$: Observable<Voucher[]> = this.vs.getVouchers();
+  vouchers$ = this.vs.getVouchers();
 
+  // Imperative Pattern
   vouchers: Voucher[];
 
   ngOnInit() {
-    //Classic Subscribe Pattern -> Unsbscribe
+    //Classic Subscribe (Imperative) Pattern -> Unsbscribe
     this.vs.getVouchers().subscribe((vs) => {
       this.vouchers = vs;
     });
   }
-
   setLabel = (v: Voucher) => ({ ...v, Label: `${v.Text} costs € ${v.Amount}` });
 
   log = (msg: string, data: any) =>
@@ -136,18 +138,19 @@ export class OperatorsComponent implements OnInit {
   }
 
   usePluck() {
-    const item = of({
+    const person: Observable<Person> = of({
       person: 'hugo',
       children: [{ name: 'jimmy' }, { name: 'giro' }, { name: 'soi' }],
     });
 
     //pluck  deprecated
-    item.pipe(pluck('children')).subscribe(console.log);
+    person.pipe(pluck('children')).subscribe(ch => console.log("children - pluck", ch));
     //use map
-    item.pipe(map((h) => h.children)).subscribe(console.log);
+    person.pipe(map((h: Person) => h.children)).subscribe(ch => console.log("children - map", ch));
   }
 
-  useSwitchMap() {
-
+  useShareReplay() {
+    //take a look at the getTasks() method in task.service.ts the network tab and of browser dev tools
+    this.ts.getTasks().subscribe((data) => console.log(data));
   }
 }

@@ -67,7 +67,6 @@
       "component": "ImperativeComponent",
       "visible": true
     },
-
     {
       "url": "subjects",
       "topicid": 2,
@@ -77,15 +76,23 @@
       "sortOrder": "sdf"
     },
     {
+      "url": "statefull",
+      "title": "Statefull Service",
+      "component": "StatefullComponent"
+    },
+    {
+      "url": "ebus",
+      "title": "EventBus",
+      "component": "EventbusComponent",
+      "id": 1,
+      "topicid": 1,
+      "visible": true,
+      "sortOrder": 3
+    },
+    {
       "url": "marble-testing",
       "title": "Marble Testing",
       "component": "MarbleTestingComponent"
-    },
-
-    {
-      "url": "caching",
-      "title": "Caching",
-      "component": "CachingComponent"
     },
     {
       "url": "errhandling",
@@ -106,20 +113,6 @@
       "url": "customops",
       "title": "Custom Operators",
       "component": "CustomOperatorsComponent"
-    },
-    {
-      "url": "statefull",
-      "title": "Statefull Service",
-      "component": "StatefullComponent"
-    },
-    {
-      "url": "ebus",
-      "title": "EventBus",
-      "component": "EventbusComponent",
-      "id": 1,
-      "topicid": 1,
-      "visible": true,
-      "sortOrder": 3
     }
   ],
   "skills": [
@@ -262,6 +255,16 @@
     },
     {
       "id": 24,
+      "title": "a new topic",
+      "sortOrder": 9
+    },
+    {
+      "id": 25,
+      "title": "a new topic",
+      "sortOrder": 9
+    },
+    {
+      "id": 26,
       "title": "a new topic",
       "sortOrder": 9
     }

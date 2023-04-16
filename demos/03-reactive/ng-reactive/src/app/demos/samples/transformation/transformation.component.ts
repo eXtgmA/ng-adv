@@ -1,28 +1,19 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { fromEvent, interval, of } from 'rxjs';
-import { TopicService } from '../../topics/topic.service';
-import { tap, take } from 'rxjs/operators';
 import {
   concatMap,
-  delay,
-  mapTo,
-  mergeMap,
-  switchMap,
-  map,
-  exhaustMap,
+  delay, exhaustMap, mergeMap,
+  switchMap, take, tap
 } from 'rxjs/operators';
+import { TopicService } from '../../topics/topic.service';
 
 @Component({
   selector: 'app-transformation',
   templateUrl: './transformation.component.html',
   styleUrls: ['./transformation.component.scss'],
 })
-export class TransformationComponent implements OnInit {
-  @ViewChild('btnSave', { static: true }) saveButton: ElementRef;
-
-  constructor(private ts: TopicService) { }
-
-  ngOnInit() { }
+export class TransformationComponent {
+  ts = inject(TopicService);
 
   useSwitchMap() {
     console.clear();
@@ -43,12 +34,9 @@ export class TransformationComponent implements OnInit {
 
     //result of first param passed to second param selector function before being  returned
     const example = source.pipe(concatMap((val) => examplePromise(val)));
-
-    //output: 'Result: 'Hello World', Result: 'Goodbye Goodbye', ....
     example.subscribe((val) => console.log('Result:', val));
   }
 
-  //mergeMap is also know under its alias: flatMap
   useMergeMap() {
     // faking network request for save
     const saveLocation = (location: any) => {
@@ -57,7 +45,6 @@ export class TransformationComponent implements OnInit {
 
     // click as stream
     const click$ = fromEvent(document, 'click');
-
     click$
       .pipe(
         mergeMap((e: Event) => {
