@@ -6,5 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./content-child.component.scss'],
 })
 export class ContentChildComponent {
-  constructor() { }
 }

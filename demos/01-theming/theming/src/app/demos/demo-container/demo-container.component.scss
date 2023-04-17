@@ -1,22 +1,15 @@
-@import "mixins.scss";
-
 mat-toolbar {
   height: var(--toolbar-medium);
   margin-bottom: var(--gap-small);
 }
 
-.mat-drawer-container {
-  background-color: var(--color-clear);
-  color: var(--color-darkfont);
+.mat-sidenav {
+  width: 250px;
+  background-color: var(--color-fg);
 }
 
 .mat-sidenav-container {
   height: 100%;
-}
-
-.mat-sidenav {
-  width: 230px;
-  background-color: var(--color-fg);
 }
 
 .sidenav-menu {

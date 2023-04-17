@@ -44,7 +44,7 @@ Set User and E-Mail:
 
 ```bash
 git config --global user.name "Your Name"
-git config --global user.email "your.email@yourdomain.com
+git config --global user.email "your.email@yourdomain.com"
 ```
 
 Congratulations you have completed the base setup of your class software requirements.

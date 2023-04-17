@@ -1,6 +1,6 @@
 ﻿# Advanced Angular Development
 
-Companion Material for Class Delivery by [Alexander Pajer](https://www.integrations.at/kontakt-impressum.aspx) containing:
+Companion Material for Class Delivery by [Alexander Pajer](https://github.com/arambazamba) containing:
 
 - [Class Environment Setup](./setup)
   - [Install class software requirements](./setup/)

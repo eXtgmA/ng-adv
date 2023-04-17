@@ -10,15 +10,14 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
     </div>
   `,
   styles: [
-    `
-           .divclass {
-             border: blue 4px solid;
-           }
-         `,
-  ],
+    `.divclass {
+        border: blue 4px solid;
+      }
+    `,
+  ]
 })
 export class FirstChildComponent implements OnInit {
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }

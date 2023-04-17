@@ -9,7 +9,7 @@ import { ThemeService } from './shared/theme/theme.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(private titleService: Title, private ts: ThemeService) {}
+  constructor(private titleService: Title, private ts: ThemeService) { }
 
   title: string = environment.title;
   selectedTheme: string = 'default';

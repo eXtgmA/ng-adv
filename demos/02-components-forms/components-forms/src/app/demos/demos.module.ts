@@ -49,6 +49,7 @@ import { SplitPopupComponent } from './samples/content-projection/split-popup/sp
 import { ContainerPresenterComponent } from './samples/container-presenter/container-presenter.component';
 import { PresenterListComponent } from './samples/container-presenter/presenter-list/presenter-list.component';
 import { PresenterEditComponent } from './samples/container-presenter/presenter-edit/presenter-edit.component';
+import { StandaloneComponent } from './samples/standalone/standalone.component';
 
 
 const appearance: MatFormFieldDefaultOptions = {
@@ -105,7 +106,8 @@ const appearance: MatFormFieldDefaultOptions = {
     MaterialModule,
     FlexLayoutModule,
     HttpClientModule,
-    MdRendererModule
+    MdRendererModule,
+    StandaloneComponent
   ],
   providers: [
     {

@@ -3,23 +3,23 @@
 @include mat.core();
 @import '@angular/material/theming';
 
-//Pick colors here: https://material.io/resources/color/
-$primary: mat.define-palette(mat.$brown-palette, 400);
+//Pick colors here: https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors
+$primary: mat.define-palette(mat.$blue-palette, 600);
 $accent: mat.define-palette(mat.$grey-palette, 400);
 $warn: mat.define-palette(mat.$red-palette);
-$fg: mat.define-palette(mat.$grey-palette, 100);
-$bg: mat.define-palette(mat.$blue-grey-palette, 100);
 
 //Build theme
-$theme: mat.define-light-theme((
- color: (
-   primary: $primary,
-   accent: $accent,
-   warn: $warn,
- ),
- typography: mat.define-typography-config(),
- density: 0,
-));
+$theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $primary,
+      accent: $accent,
+      warn: $warn,
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+  )
+);
 
 //Include theme
 @include angular-material-theme($theme);
@@ -29,8 +29,6 @@ $theme: mat.define-light-theme((
   --color-primary: #{mat-color($primary)};
   --color-accent: #{mat-color($accent)};
   --color-warn: #{mat-color($warn)};
-  --color-fg: #{mat-color($fg)};
-  --color-bg: #{mat-color($bg)};
 
   --gap-small: 0.5rem;
   --gap-medium: 0.8rem;
