@@ -1,5 +1,6 @@
 import { Component, computed, effect, signal } from '@angular/core';
-
+import { toObservable, toSignal } from '@angular/core/rxjs-interop';
+import { of, startWith } from 'rxjs';
 @Component({
   selector: 'app-signals-basics',
   templateUrl: './signals-basics.component.html',
@@ -9,10 +10,14 @@ export class SignalsBasicsComponent {
 
   totalAmount = signal<number>(0);
   runningAmount = signal<number>(10);
+  amountSignal = signal<number>(0);
 
   constructor() {
     effect(() => {
       console.log('totalAmount changed', this.totalAmount());
+    });
+    effect(() => {
+      console.log(this.amountSignal());
     });
   }
 
@@ -39,12 +44,17 @@ export class SignalsBasicsComponent {
   }
 
   signalObservable() {
-    // PullRequest will be accepted soon
-    // const amount$ = of(10);
-    // const amountSignal = fromObservable(amount$, 0);
+    const amount$ = of(10).pipe(startWith(0));
+    let am = toSignal(amount$);
+    // this.amountSignal.set(toSignal(amount$));
 
-    // const tax = signal(0.2);
-    // const tax$ = fromSignal(tax);
+    const tax = signal(0.2);
+    const tax$ = toObservable(tax);
+
+    tax$.subscribe(amount => {
+      console.log('tax from signal', amount);
+    });
+
   }
 
 }
