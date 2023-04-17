@@ -45,8 +45,8 @@ export class SignalsBasicsComponent {
 
   signalObservable() {
     const amount$ = of(10).pipe(startWith(0));
-    let am = toSignal(amount$);
-    // this.amountSignal.set(toSignal(amount$));
+    let am = toSignal(amount$, { initialValue: 0 })
+    this.amountSignal.update(toSignal(amount$, { initialValue: 0 }));
 
     const tax = signal(0.2);
     const tax$ = toObservable(tax);
