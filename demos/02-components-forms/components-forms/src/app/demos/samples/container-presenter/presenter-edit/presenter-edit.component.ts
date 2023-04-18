@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./presenter-edit.component.scss']
 })
 export class PresenterEditComponent {
-  @Input() person: Person = new Person();
+  @Input({ required: true }) person: Person = new Person();
   @Output() savePerson: EventEmitter<Person> = new EventEmitter<Person>();
 
   fb = inject(FormBuilder);
