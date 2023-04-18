@@ -1,10 +1,6 @@
-<app-food-list
-  [food]="food"
-  (foodSelected)="selectFood($event)"
-></app-food-list>
+<app-food-list [food]="food"
+               (foodSelected)="selectFood($event)"></app-food-list>
 
-<app-food-edit
-  *ngIf="selected"
-  [food]="selected"
-  (saveFood)="foodSaved($event)"
-></app-food-edit>
+<app-food-edit *ngIf="selected"
+               [food]="selected"
+               (saveFood)="foodSaved($event)"></app-food-edit>
