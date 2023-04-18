@@ -1,4 +1,6 @@
-@import "theme/reset.scss";
+@import "reset";
+@import "mat-theme";
+@import "mat-theme-overrides";
 
 mat-form-field {
   width: 100%;
