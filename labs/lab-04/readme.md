@@ -132,7 +132,7 @@ import {
 import { AppState } from './app.reducer';
 import {
   getSideNavPosition, getSideNavVisible
-} from './app.selector';
+} from './app.selectors';
 
 @Injectable({
   providedIn: 'root',
@@ -170,8 +170,6 @@ export class MenuFacade {
 }
 ```
 
->Note: As `@angular/flex-layout` is in a deprecation state in future implementations you could use `@angular/cdk/layout` to detect the screen size.
-
 Add the following modules and imports to `app.module.ts`:
 
 ```typescript
@@ -183,8 +181,6 @@ import { environment } from 'src/environments/environment';
 ...
 
 StoreModule.forRoot(reducers),
-EffectsModule.forRoot([]),
-EntityDataModule.forRoot({}),
 StoreDevtoolsModule.instrument({
     logOnly: environment.production,
 }),
@@ -217,8 +213,8 @@ Update the code in in app.component.html:
 ```html
 <mat-sidenav
     #sidenav
-    [opened]="ms.sideNavVisible | async"
-    [mode]="ms.sideNavPosition | async"
+    [opened]="ms.getSideNavVisible() | async"
+    [mode]="ms.getSideNavPosition() | async"
     class="sidebar">
     Sidenav content
 </mat-sidenav>

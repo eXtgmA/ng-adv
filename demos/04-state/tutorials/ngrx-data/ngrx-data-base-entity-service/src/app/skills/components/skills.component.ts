@@ -4,7 +4,7 @@ import {
   EntityCollectionServiceFactory,
 } from '@ngrx/data';
 import { Observable } from 'rxjs';
-import { Skill } from '../skill.model';
+import { Skill } from '../skills.model';
 import { SkillsEntityService } from '../skills-entity.service';
 
 @Component({

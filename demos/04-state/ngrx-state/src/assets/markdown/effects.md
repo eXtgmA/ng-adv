@@ -1,3 +1,5 @@
+- A simple implementation of effects is located in the customers folder. The shared/markdown-editor contains an effct imlementation that is more complex
+
 - Use the Mock Markdown Editor to update a Comment of your choice. Check the `db.json` file in the root of the project if it has been updated. Display of the editor is controlled by `sidepanel.service.ts`
 
 - The mock markdown-editor located in `/shared/markdown-editor` is using actions that are created using createActionGroup and implements effects for editor comments CRUD operations.
@@ -17,18 +19,13 @@ saveComment(item: CommentItem) {
 - ANotice on how to respond on completed effects in a facade:
 
 ```javascript
-this.subs = this.actions
-  .pipe(
+this.subs = this.actions.pipe(
     ofType(
       MarkdownEditorActions.savecommentssuccess,
       MarkdownEditorActions.savecommentsfailure,
       ...
-    )
-  )
-  .subscribe((data) => {
-    console.log('action complete', data);
-    this.callCompletedSub.next(true);
-  });
+    ))
+  .subscribe((data) => {this.callCompletedSub.next(true);});
 ```
 
 This is used in `editor-container.component.ts` to toggle display of the editor

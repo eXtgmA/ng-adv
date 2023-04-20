@@ -10,6 +10,12 @@ Create project:
 ng new ngrx-data
 ```
 
+Add the environments configuration:
+
+```bash
+ng generate environments
+```
+
 Add NgRx:
 
 ```bash
@@ -54,7 +60,7 @@ Create skills metadata in `skills/entity-metadata.ts`:
 
 ```typescript
 import { EntityMetadataMap, EntityDataModuleConfig } from '@ngrx/data';
-import { Skill } from './skill.model';
+import { Skill } from './skills.model';
 
 export function sortByName(a: Skill, b: Skill): number {
   let comp = a.name.localeCompare(b.name);

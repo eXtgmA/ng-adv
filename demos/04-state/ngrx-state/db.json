@@ -80,24 +80,6 @@
       "topicid": 1,
       "visible": true,
       "sortOrder": 3
-    },
-    {
-      "url": "cd-intro",
-      "title": "Change Detection",
-      "component": "ChangeDetectionComponent",
-      "id": 12,
-      "topicid": 1,
-      "visible": true,
-      "sortOrder": 3
-    },
-    {
-      "url": "cd-profile",
-      "title": "Profile Change Detection",
-      "component": "ChangeDetectionProfileComponent",
-      "id": 20,
-      "topicid": 1,
-      "visible": true,
-      "sortOrder": 3
     }
   ],
   "skills": [
@@ -109,7 +91,7 @@
     {
       "id": 2,
       "name": "NgRx",
-      "completed": false
+      "completed": true
     },
     {
       "id": 3,
@@ -129,7 +111,7 @@
     {
       "id": 6,
       "name": "Node",
-      "completed": false
+      "completed": true
     },
     {
       "id": 7,
@@ -158,6 +140,14 @@
       "saved": "2020-09-16T20:10:06.925Z"
     }
   ],
+  "customers": [
+    {
+      "id": 1, "name": "Fritzi"
+    },
+    {
+      "id": 2, "name": "Mimi"
+    }
+  ],
   "top-links": [
     {
       "label": "Home",
@@ -170,6 +160,10 @@
     {
       "label": "Skills",
       "url": "skills"
+    },
+    {
+      "label": "Customers",
+      "url": "customers"
     }
   ]
 }

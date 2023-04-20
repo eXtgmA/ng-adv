@@ -282,7 +282,7 @@ Your project should look like this:
 Add a second app used for dependency graph later on:
 
 ```
-nx generate @nrwl/angular:app ng-otherapp --routing --style=scss --standaloneApi false
+nx generate @nrwl/angular:app ng-otherapp --routing --style=scss 
 ```
 
 Repate the steps in the second project in order to see a Dependency Graph where the button is used in two projects

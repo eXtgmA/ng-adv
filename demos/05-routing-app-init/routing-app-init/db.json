@@ -97,9 +97,14 @@
     { "id": 3, "name": "JavaScript", "hours": 10, "completed": false },
     { "id": 4, "name": "Angular", "hours": 20, "completed": false }
   ],
-  "customers": {
-    "id": 1, "name": "Fritzi"
-  },
+  "customers": [
+    {
+      "id": 1, "name": "Fritzi"
+    },
+    {
+      "id": 2, "name": "Mimi"
+    }
+  ],
   "top-links": [
     {
       "label": "Home",

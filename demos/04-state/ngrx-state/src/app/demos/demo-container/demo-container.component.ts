@@ -2,9 +2,9 @@ import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { filter, map, takeUntil } from 'rxjs/operators';
-import { SideNavService } from 'src/app/shared/sidenav/sidenav.service';
 import { SidebarActions } from 'src/app/shared/side-panel/sidebar.actions';
 import { SidePanelService } from 'src/app/shared/side-panel/sidepanel.service';
+import { SideNavService } from 'src/app/shared/sidenav/sidenav.service';
 import { environment } from 'src/environments/environment';
 import { LoadingService } from '../../shared/loading/loading.service';
 import { DemoFacade } from '../state/demo.facade';
@@ -18,7 +18,7 @@ export class DemoContainerComponent implements OnInit {
   router = inject(Router);
   route = inject(ActivatedRoute);
   df = inject(DemoFacade);
-  ms = inject(SideNavService);
+  nav = inject(SideNavService);
   ls = inject(LoadingService);
   eb = inject(SidePanelService);
 
@@ -29,8 +29,8 @@ export class DemoContainerComponent implements OnInit {
 
   isLoading = false;
 
-  sidenavMode = this.ms.getSideNavPosition();
-  sidenavVisible = this.ms.getSideNavVisible();
+  sidenavMode = this.nav.getSideNavPosition();
+  sidenavVisible = this.nav.getSideNavVisible();
   workbenchMargin = this.sidenavVisible.pipe(
     map(visible => { return visible ? { 'margin-left': '5px' } : {} })
   );

@@ -3,7 +3,7 @@
 Create a new Project Called `ngrx-skills` and open it in VS Code:
 
 ```bash
-ng n ngrx-skills-entity --routing true --style scss
+ng new ngrx-skills-entity --routing true --style scss
 ```
 
 > Note: Some Hints in this Guide assume that you are using the [NgRx Snippets - VS Code Extension](https://marketplace.visualstudio.com/items?itemName=hardikpthv.NgRxSnippets)
@@ -15,6 +15,12 @@ ng add @ngrx/schematics --DefaultCollection true
 ```
 
 > Note: Answer the question "Do you want to use @ngrx/schematics as the default collection" with yes
+
+Add the environments configuration:
+
+```bash
+ng generate environments
+```
 
 ## Schematics Overview
 

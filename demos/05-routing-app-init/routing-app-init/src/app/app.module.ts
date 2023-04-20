@@ -27,6 +27,7 @@ import { configFactory } from './app-init/config.factory';
 import { ConfigService } from './app-init/config.service';
 import { EntityDataModule } from '@ngrx/data';
 import { GlobalErrService } from './error/global-err-handler';
+import { CustomerEffects } from './customers/state/customers.effects';
 // import { GlobalErrService } from './error/global-err-handler';
 // import { HttpErrorInterceptor } from './error/globle-http-err-handler';
 // import { FBAuthInterceptor } from './auth/fbauth.interceptor';
@@ -51,7 +52,7 @@ import { GlobalErrService } from './error/global-err-handler';
         strictActionImmutability: false,
       },
     }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([CustomerEffects]),
     EntityDataModule.forRoot({}),
     StoreDevtoolsModule.instrument({
       name: 'ng-demo-app',

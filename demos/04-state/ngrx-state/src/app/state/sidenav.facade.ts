@@ -15,7 +15,6 @@ import { getSideNavVisible, getSideNavPosition } from './app.selector';
   providedIn: 'root',
 })
 export class SideNavFacade {
-
   breakpointObserver = inject(BreakpointObserver);
   store = inject(Store<AppState>);
 

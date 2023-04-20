@@ -4,7 +4,7 @@ import { createReducer, on } from '@ngrx/store';
 import { Customer } from '../app-init/customer.model';
 import { User } from '../user/user.model';
 import { changeSideNavPosition, changeSideNavVisible, toggleLoggedIn, togglePrimeMember, toggleSideNav } from './app.actions';
-import { loadCustomersSuccess } from './customers.actions';
+import { CustomersActions } from '../customers/state/customers.actions';
 
 export const appFeatureKey = 'app';
 
@@ -20,14 +20,18 @@ export const customerAdapter: EntityAdapter<Customer> =
 
 export const initialAppState: AppState = customerAdapter.getInitialState({
   title: 'Advanced Angular Development',
-  user: { name: 'Giro the Galgo', isLoggedIn: false, isPrimeMember: false },
+  user: {
+    name: 'Giro the Galgo',
+    isLoggedIn: false,
+    isPrimeMember: false
+  },
   sideNavVisible: true,
   sideNavPosition: 'side',
 });
 
 export const appReducer = createReducer(
   initialAppState,
-  on(loadCustomersSuccess, (state, action) => {
+  on(CustomersActions.loadcustomerssuccess, (state, action) => {
     return customerAdapter.setAll(action.items, { ...state });
   }),
   on(toggleLoggedIn, (state, action) => {

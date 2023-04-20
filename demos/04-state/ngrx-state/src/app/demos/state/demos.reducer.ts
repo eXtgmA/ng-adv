@@ -32,15 +32,7 @@ export const defaultDemoItemState: DemoState = {
   entities: {},
   loaded: false,
   filter: '',
-  selected: {
-    id: 0,
-    title: '',
-    component: '',
-    sortOrder: 0,
-    visible: true,
-    url: '',
-    topicid: 1,
-  },
+  selected: new DemoItem()
 };
 
 export const initialState = demosAdapter.getInitialState(defaultDemoItemState);

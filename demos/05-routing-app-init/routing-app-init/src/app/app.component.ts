@@ -9,7 +9,9 @@ import { ThemeService } from './shared/theme/theme.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(private titleService: Title, private ts: ThemeService) {}
+  constructor(private titleService: Title, private ts: ThemeService) {
+    console.log('AppComponent constructor');
+  }
 
   title: string = environment.title;
   selectedTheme: string = 'default';
